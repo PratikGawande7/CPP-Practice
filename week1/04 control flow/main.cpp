@@ -1,4 +1,4 @@
-// today we will learn how to write code for conditions
+// today we will learn how to write code for dealing with condition using conditional statements
 
 #include<iostream>
 using namespace std ;
@@ -45,7 +45,15 @@ int main(){
 // }
 
 
+// also in case of boolean
+// example- isReady= 0;
+// So these are equivalent:
+// if (isReady == 0)
+// if (!isReady)
 
+//  isReady=1;
+// if ( isReady == 1)
+// if ( isReady )
 
 
 

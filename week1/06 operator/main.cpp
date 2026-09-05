@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-    // unaryoperator 
+    // unary operator 
     // Unary operators operate on only one operand.
     // They are called unary because they work with a single variable/value.
 
@@ -44,7 +44,7 @@ int main() {
     // Prefix changes the value before using it.
     // Postfix uses the old value first, then changes it.
 
-    // also in out loop case instead of doing updation like i=i+1 wecan now just write i++ or ++i .
+    // also in loop case instead of doing updation like i=i+1 we can now just write i++ or ++i .
 
 
 
@@ -74,6 +74,9 @@ int main() {
     cout<< (5>= 10 ) << endl;
     cout<< (5 == 5)  << endl;
     cout<< ( 5 != 10)<< endl;
+
+    // Logical operators
+    // (1) && (logical AND operator)=
 
     return 0;
 }

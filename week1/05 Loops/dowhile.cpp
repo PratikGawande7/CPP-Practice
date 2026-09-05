@@ -4,7 +4,7 @@
 // do{
 // code to be executed in each iteration
 // updation;
-//} while(updation);
+//} while(condition);
 
 #include<iostream>
 using namespace std;

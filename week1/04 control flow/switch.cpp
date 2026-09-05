@@ -18,7 +18,8 @@ cin>>grade;
 
 // else if (grade == 'B')
 // {
-//     cout<<"your marks is in the range 80-90"<<endl;}
+//     cout<<"your marks is in the range 80-90"<<endl;
+// }
 // else if (grade == 'C')
 // {
 //     cout<<"your marks is in the range 70-80"<<endl;
@@ -35,7 +36,7 @@ cin>>grade;
 
 
 
-// switch case statement
+// switch case statement-
 //format- switch(expression){
 // case value1:code to be executed if expression equal value1
 // break;
@@ -43,7 +44,7 @@ cin>>grade;
 // break;
 // case value3: code to be  executed if expression equal value3
 // default:code to be executed if none of the case match 
-}
+// }
 switch(grade){
     case 'A': cout<<"your marks is in range 90-100"<<endl;
     break;
@@ -51,13 +52,13 @@ switch(grade){
     break;
     case 'C':cout<<"your marks is in range 70-80 "<<endl;
     break;
-    case 'D':cout<<"your marks i9s in range of 60-70"<<endl;
+    case 'D':cout<<"your marks is in range of 60-70"<<endl;
     break;
     default:cout<<"your marks is below 60 "<<endl;
 
 }
 
-// rule of switch (expression)- 
+// rule of switch (expression) 
 // expression type- The expression used in a switch statement must be of an integral or enumerated type.
 // Supported data types include:
 // int
@@ -68,11 +69,12 @@ switch(grade){
 //unique case values- dont take same case again again with diferent outputs.
 
 
-//no case checking - dont make cases with condtion like case (age>12) this is not allow only cases with constant value works.
+//no case checking - dont make cases with condtion like case (age>12) this is not allow only cases with constant value works.( so for such cases use if else statements )
 
 
 
-//fall through behaviour - write break after each case when fall-through is not intended
+//fall through behaviour - write break after each case when fall-through is not intended 
+// because unlike conditional statement it carry all cases one after the other if break is not added.
 
 
 

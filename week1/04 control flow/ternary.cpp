@@ -1,4 +1,4 @@
-//we will study ternary operator
+// we will study ternary operator
 
 
 #include<iostream>
@@ -15,7 +15,7 @@ int age=12;
 // else{
 //     cout<<"you are not eligible to vote "<<endl;
 
-//ternary operator
+// ternary operator
 // format- condition ? expression_if_true: expression_if_false; 
 // example -1
 // (age>18) ? cout<<"you are eligible to vote ":cout<<"you are not eligible to vote ";
