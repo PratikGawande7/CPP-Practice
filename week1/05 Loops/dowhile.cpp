@@ -28,7 +28,7 @@ int main(){
 
 
 
-// nested loop
+// nested loop- A nested loop is a loop placed inside another loop. The inner loop runs completely for each iteration of the outer loop.
 for (int i=1;i<=3;i=i+1){
     for (int j=1;j<=3;j=j+1){
         cout<<i<<j<<endl;

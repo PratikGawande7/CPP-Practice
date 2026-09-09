@@ -7,7 +7,7 @@
 using namespace std;
 
 
-int main(){
+int main(){ 
 // for loop
 // for (initialization; condition ;updation ){
 // code to be executed in each iteration 
@@ -77,7 +77,7 @@ for (int i=1;i<=10;i=i+1){
 }
   
 // while loop- it is also loop but its format is different from for loop
-// initialization
+// initialization;
 // while (condition){
 // code to be executed in each iteration  
 // 
