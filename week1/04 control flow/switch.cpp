@@ -1,4 +1,4 @@
-// today  we will learn about using switch case instead of using if- else if/if- else if - else statement
+// today we will learn about using switch case instead of using if- else if/if- else if - else statement
 
 
 #include<iostream>
@@ -80,8 +80,18 @@ switch(grade){
 
 // execution order - execution starts at the matching case and continues until break or the end
 
+// bool can be used because it converts to an integral value:
+// false = 0, true = 1 
+// bool isLoggedIn = true;
 
-
+// switch (isLoggedIn) {
+//     case true:
+//         cout << "Logged in";
+//         break;
+//     case false:
+//         cout << "Not logged in";
+//         break;
+// }
 
 
 

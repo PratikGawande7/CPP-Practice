@@ -1,5 +1,5 @@
 // we will study ternary operator
-
+// we will study how to use ternary operator instead of using simple if-else statement for true or false expressions.
 
 #include<iostream>
 using namespace std;
@@ -36,7 +36,7 @@ int age=12;
 // }
 
 // cout<<result;
-//instead of doing this you can uuse ternary operator
+//instead of doing this you can use ternary operator
 
 int x=12;
 int y= 10;

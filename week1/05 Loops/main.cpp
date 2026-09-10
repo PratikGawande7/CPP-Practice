@@ -8,6 +8,7 @@ using namespace std;
 
 
 int main(){ 
+   
 // for loop
 // for (initialization; condition ;updation ){
 // code to be executed in each iteration 
