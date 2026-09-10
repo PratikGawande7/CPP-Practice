@@ -158,5 +158,85 @@ cout<<!isMale<<endl;
 
     // Remember: = assigns a value; == compares two values.
 
+    // Bitwise operators
+    // Bitwise operators work on the individual bits of an integer.
+    // Example:
+    // 5 = 00000101
+    // 3 = 00000011
+
+    // (1) Bitwise AND (&)
+    // A bit is 1 only when both input bits are 1.
+    //   00000101  (5)
+    // & 00000011  (3)
+    // -----------
+    //   00000001  (1)
+    // 5 & 3 = 1
+    cout << "5 & 3 = " << (5 & 3) << endl;
+
+    // (2) Bitwise OR (|)
+    // A bit is 1 when at least one input bit is 1.
+    //   00000101  (5)
+    // | 00000011  (3)
+    // -----------
+    //   00000111  (7)
+    // 5 | 3 = 7
+    cout << "5 | 3 = " << (5 | 3) << endl;
+
+    // (3) Bitwise XOR (^)
+    // A bit is 1 when the two input bits are different.
+    //   00000101  (5)
+    // ^ 00000011  (3)
+    // -----------
+    //   00000110  (6)
+    // 5 ^ 3 = 6
+    cout << "5 ^ 3 = " << (5 ^ 3) << endl;
+
+    // XOR truth table:
+    // 0 ^ 0 = 0
+    // 0 ^ 1 = 1
+    // 1 ^ 0 = 1
+    // 1 ^ 1 = 0
+
+    // (4) Bitwise NOT (~)
+    // NOT flips every bit: 0 becomes 1 and 1 becomes 0.
+    // ~5 is commonly -6 for a signed int because:
+    // ~n = -(n + 1), so ~5 = -(5 + 1) = -6.
+    cout << "~5 = " << ~5 << endl;
+
+    // (5) Left shift (<<)
+    // Shifting left by one position usually multiplies a non-negative
+    // number by 2.
+    // 5      = 00000101
+    // 5 << 1 = 00001010 = 10
+    cout << "5 << 1 = " << (5 << 1) << endl;
+
+    // (6) Right shift (>>)
+    // Shifting right by one position usually divides a non-negative
+    // number by 2, dropping any remainder.
+    // 20      = 00010100
+    // 20 >> 1 = 00001010 = 10
+    cout << "20 >> 1 = " << (20 >> 1) << endl;
+
+    // Practical example: checking odd or even.
+    // The last bit is 1 for odd numbers and 0 for even numbers.
+    int value = 5;
+    if ((value & 1) == 1) {
+        cout << value << " is odd" << endl;
+    } else {
+        cout << value << " is even" << endl;
+    }
+
+    // Bitwise operators are different from logical operators:
+    // &  compares integer bits; && combines conditions.
+    // |  compares integer bits; || combines conditions.
+    // Use parentheses when combining bitwise operators with comparisons.
+
+
+
+
+
+
+
+    
     return 0;
 }
