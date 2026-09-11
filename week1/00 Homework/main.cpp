@@ -424,6 +424,24 @@ int main(){
 //
 // wholeNumber is automatically converted to double before addition.
 
+// INTEGER DIVISION
+// The type of the operands affects the type of the result.
+// If both operands are int, C++ performs integer division.
+// Integer division keeps only the whole-number part and removes the remainder.
+//
+// int result = 5 / 2;
+// result becomes 2, not 2.5.
+// Both 5 and 2 are int values, so the result is calculated as an int.
+//
+// To get a decimal answer, at least one operand must be a floating-point value:
+// double result1 = 5.0 / 2;                    // 2.5
+// double result2 = static_cast<double>(5) / 2; // 2.5
+//
+// In simple words:
+// int / int = integer result
+// double / int = decimal result
+// int / double = decimal result
+
 // EXPLICIT TYPECASTING
 // Explicit typecasting happens when the programmer manually asks C++
 // to convert a value to another type.
