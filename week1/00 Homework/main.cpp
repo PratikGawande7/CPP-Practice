@@ -318,3 +318,149 @@ int main(){
 
 //  For float or double:
 // fmod(10.5, 3.2);     // fmod() function
+
+
+
+// ==================== BINARY AND NUMBER SYSTEMS ====================
+// A number system is a way of representing numbers using a set of symbols
+// and a base.
+//
+// The base tells us how many different digits are available in that system.
+//
+// Decimal number system:
+// - Base 10
+// - Uses the digits 0 to 9
+// - This is the number system people normally use.
+// Example: 538
+//
+// Binary number system:
+// - Base 2
+// - Uses only the digits 0 and 1
+// - Computers use binary to represent and process data.
+// Example: 1011 (binary)
+//
+// Octal number system:
+// - Base 8
+// - Uses the digits 0 to 7
+// Example: 27 (octal)
+//
+// Hexadecimal number system:
+// - Base 16
+// - Uses 0 to 9 and A to F
+// - A means 10, B means 11, C means 12, D means 13,
+//   E means 14, and F means 15.
+// Example: 2F (hexadecimal)
+
+// PLACE VALUE IN A NUMBER SYSTEM
+// In every number system, the value of a digit depends on its position.
+// The positions start from the right side with power 0.
+//
+// Decimal example:
+// 538 = (5 * 10^2) + (3 * 10^1) + (8 * 10^0)
+//     = 500 + 30 + 8
+//     = 538
+//
+// Binary example:
+// 1011 = (1 * 2^3) + (0 * 2^2) + (1 * 2^1) + (1 * 2^0)
+//      = 8 + 0 + 2 + 1
+//      = 11 in decimal
+
+// CONVERTING DECIMAL TO BINARY
+// To convert a decimal number to binary:
+// 1. Divide the number by 2.
+// 2. Write down the remainder, which is always 0 or 1.
+// 3. Divide the quotient by 2 again.
+// 4. Continue until the quotient becomes 0.
+// 5. Read the remainders from bottom to top.
+//
+// Example: convert decimal 13 to binary
+// 13 / 2 = 6 remainder 1
+//  6 / 2 = 3 remainder 0
+//  3 / 2 = 1 remainder 1
+//  1 / 2 = 0 remainder 1
+//
+// Reading the remainders from bottom to top:
+// 13 in decimal = 1101 in binary
+
+// CONVERTING BINARY TO DECIMAL
+// Multiply each binary digit by its power of 2 and add the results.
+//
+// Example:
+// 1101 = (1 * 2^3) + (1 * 2^2) + (0 * 2^1) + (1 * 2^0)
+//      = 8 + 4 + 0 + 1
+//      = 13 in decimal
+
+// In C++, an integer literal can be written in different number systems:
+// int decimalNumber = 13;      // decimal
+// int binaryNumber = 0b1101;   // binary
+// int octalNumber = 015;       // octal
+// int hexadecimalNumber = 0xD; // hexadecimal
+//
+// The prefix tells C++ which number system is being used:
+// 0b or 0B = binary
+// 0        = octal
+// 0x or 0X = hexadecimal
+
+
+// ==================== TYPECASTING ====================
+// Typecasting means converting a value from one data type to another data type.
+// It is useful when we want an operation to use a different data type.
+
+// IMPLICIT TYPECASTING
+// Implicit typecasting happens automatically when C++ converts a value
+// to another compatible type.
+// It usually converts a smaller type into a larger type to avoid data loss.
+//
+// Example:
+// int number = 10;
+// double result = number;
+//
+// The int value 10 is automatically converted to the double value 10.0.
+
+// Another example:
+// int wholeNumber = 5;
+// double decimalNumber = 2.5;
+// double answer = wholeNumber + decimalNumber;
+//
+// wholeNumber is automatically converted to double before addition.
+
+// EXPLICIT TYPECASTING
+// Explicit typecasting happens when the programmer manually asks C++
+// to convert a value to another type.
+//
+// Syntax:
+// dataType(value)
+//
+// Example:
+// int a = 5;
+// int b = 2;
+// double answer = double(a) / b;
+//
+// Without typecasting, a / b performs integer division and gives 2.
+// With double(a), the division gives 2.5.
+
+// C++ style explicit typecasting can also be written using static_cast:
+// int a = 5;
+// int b = 2;
+// double answer = static_cast<double>(a) / b;
+
+// TYPECASTING A DECIMAL TO AN INTEGER
+// When a decimal value is converted to int, the fractional part is removed.
+// It does not round the value.
+//
+// double price = 9.75;
+// int wholePrice = static_cast<int>(price);
+// wholePrice becomes 9.
+
+// POSSIBLE DATA LOSS
+// Converting a larger or more precise type to a smaller type can lose data.
+//
+// double value = 12.89;
+// int result = static_cast<int>(value);
+// result becomes 12, so .89 is lost.
+
+// Summary:
+// - Implicit typecasting is performed automatically by C++.
+// - Explicit typecasting is performed manually by the programmer.
+// - Typecasting can be used to control the result of an operation.
+// - Converting from double to int removes the decimal part.
