@@ -52,12 +52,12 @@ int main() {
     // A binary operator operates on two operands (values).
     // (1) Arithmetic operator 
     // (2) Relational operator 
-    // (3) Relational operator 
+    // (3) Logical operator 
     // (4) Bitwise operator 
     // (5) Assignment operator 
 
 
-    // Arithmetic operator 
+    // Arithmetic operator -Arithmetic operators perform mathematical calculations.
     int a=10;
     int b=5;
     cout<< a+b <<endl;
@@ -66,7 +66,7 @@ int main() {
     cout<< a/b <<endl;
     cout<< a%b <<endl; // it print remainder when a is devided by b 
 
-    cout<< 5*1.0/2<<endl; // if we do 5/2 the answer comes as 2 instead of 2.5 this is due to typecasting 
+    cout<< 5*1.0/2<<endl; // if we do 5/2 the answer comes as 2 instead of 2.5 this is due to typecasting which will be taught after finishing operator
 
     // typecasting
 
@@ -158,7 +158,7 @@ cout<<!isMale<<endl;
 
     // Remember: = assigns a value; == compares two values.
 
-    // Bitwise operators
+    // Bitwise operators 
     // Bitwise operators work on the individual bits of an integer.
     // Example:
     // 5 = 00000101
@@ -174,7 +174,7 @@ cout<<!isMale<<endl;
     cout << "5 & 3 = " << (5 & 3) << endl;
 
     // (2) Bitwise OR (|)
-    // A bit is 1 when at least one input bit is 1.
+    // A bit is 1 when at least one input bit is 1. 
     //   00000101  (5)
     // | 00000011  (3)
     // -----------
@@ -207,7 +207,7 @@ cout<<!isMale<<endl;
     // Shifting left by one position usually multiplies a non-negative
     // number by 2.
     // 5      = 00000101
-    // 5 << 1 = 00001010 = 10
+    // 5 << 1 = 00001010 = 10 the rightmost position is fill with 0.and the left most position is just erase
     cout << "5 << 1 = " << (5 << 1) << endl;
 
     // (6) Right shift (>>)
