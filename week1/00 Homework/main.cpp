@@ -310,6 +310,11 @@ int main(){
 
 
 
+// can we apply modulus operator (%) on float type value
+// answer-The % operator works only with integers because it calculates the whole-number remainder
+// Floating-point numbers can contain decimal fractions, so C++ uses fmod() to calculate their remainder
+// // For integers:
+// 10 % 3;              // modulus operator
 
-
-
+//  For float or double:
+// fmod(10.5, 3.2);     // fmod() function

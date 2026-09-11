@@ -231,7 +231,32 @@ cout<<!isMale<<endl;
     // |  compares integer bits; || combines conditions.
     // Use parentheses when combining bitwise operators with comparisons.
 
-
+// Bitwise operators work with integral data types.
+// Integral data types store whole numbers.
+//
+// Examples:
+// char
+// short
+// int
+// long
+// long long
+//
+// Bitwise operators also work with unsigned versions,
+// such as unsigned int and unsigned long.
+//
+// Example:
+// int a = 5;
+// int b = 3;
+//
+// cout << (a & b);
+//
+// Bitwise operators work on the individual binary bits
+// of whole-number values.
+//
+// They cannot normally be used with:
+// float
+// double
+// string
 
 
 
