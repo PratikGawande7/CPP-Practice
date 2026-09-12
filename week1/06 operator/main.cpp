@@ -85,7 +85,7 @@ int main() {
     cout<< (5 == 5)  << endl;
     cout<< (5 != 10)<< endl;
 
-    // Logical operators
+    // Logical operators 
     // (1) && (logical AND operator)= we know that if we have to check any condition is true or false then we just do if (cond1){} 
     // but in case if we have to check whether mutiple condition are true or not we use and operator 
     // format - if (cond1 && cond2 && cond3){}
