@@ -6,6 +6,7 @@ using namespace std;
 // A function is a named block of code that performs a specific task.
 // A function can take input, process it, and return an output.
 // Example: a flour mill takes wheat as input, processes it, and gives flour as output.
+// A function may also take no input or return no value.
 
 // Why do we use functions?
 // 1. They avoid repeating the same code.
@@ -35,9 +36,11 @@ using namespace std;
 
 // The function must be declared or defined before it is called.
 
-// Example of a function that returns an integer:
+// Example of a function that returns an integer.
+// The parameters a and b receive the arguments passed during the call.
 int add(int a, int b) {
-	return a + b;
+	int totalSum = a + b;
+	return totalSum;
 }
 
 // A void function does not return any value.
@@ -57,6 +60,28 @@ int getMultiplication(int x, int y, int z) {
 // Converts Fahrenheit into Celsius.
 int convertIntoCelsius(int fahrenheit) {
 	return (fahrenheit - 32) * 5 / 9;
+}
+
+// Prints the name 10 times.
+void printName10Times() {
+	for (int count = 1; count <= 10; count++) {
+		cout << "Babbar" << endl;
+	}
+}
+
+// Prints the multiples of num from 1 to 10.
+void printMultiples(int num) {
+	for (int count = 1; count <= 10; count++) {
+		cout << num * count << " ";
+	}
+	cout << endl;
+}
+
+// Converts a lowercase character into uppercase using ASCII arithmetic.
+// Uppercase character = ch - 'a' + 'A'.
+char convertIntoUppercase(char ch) {
+	char answer = ch - 'a' + 'A';
+	return answer;
 }
 
 // A function can also print output instead of returning a value.
@@ -80,9 +105,22 @@ int main() {
 	int celsius = convertIntoCelsius(32);
 	cout << "Celsius: " << celsius << endl;
 
-	// Calling a void function.
+	// Calling void functions.
 	printMessage();
+	printName10Times();
+	printMultiples(5);
 	printCounting();
+
+	char uppercaseCharacter = convertIntoUppercase('k');
+	cout << "Uppercase: " << uppercaseCharacter << endl;
+
+	// Homework from the lecture:
+	// 1. Write a function to print counting from 1 to 10.
+	// 2. Write a function to calculate Simple Interest using P, R, and T.
+	// 3. Write a function to print all prime numbers between 1 and 100.
+	// 4. Write a function to check voting eligibility (age >= 18).
+	// 5. Write an SIP Calculator function using monthly investment,
+	//    duration in years, and expected rate of return.
 
 	return 0;
 }
