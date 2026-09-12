@@ -66,14 +66,14 @@ switch(grade){
 // enum 
 // Floating-point types such as float or double and complex data types cannot be directly used in a switch expression.Also you cannot use string.
 
-//unique case values- dont take same case again again with diferent outputs.
+// unique case values- dont take same case again again with diferent outputs.
 
 
-//no case checking - dont make cases with condtion like case (age>12) this is not allow only cases with constant value works.( so for such cases use if else statements )
+// no case checking - dont make cases with condtion like case (age>12) this is not allow only cases with constant value works.( so for such cases use if else statements )
 
 
 
-//fall through behaviour - write break after each case when fall-through is not intended 
+// fall through behaviour - write break after each case when fall-through is not intended 
 // because unlike conditional statement it carry all cases one after the other if break is not added.
 
 
