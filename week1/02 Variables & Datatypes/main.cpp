@@ -68,7 +68,7 @@ cout<<sizeof(age)<<endl; // 4 bytes
 
 
 
-//also 1 byte is the smallest unit of memory and 1 byte=8 bits
+// also 1 byte is the smallest unit of memory and 1 byte=8 bits
 
 // ek scope ke andar variable ko redefine nahi kar sakte hai. ek scope ke andar variable ko sirf ek bar define kar sakte hai.
 // A variable declared in an outer block is visible in inner blocks.

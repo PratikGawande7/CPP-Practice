@@ -1,4 +1,4 @@
-// today we will learn how to write code for dealing with condition using conditional statements
+// today we will learn how to write code for dealing with conditions using conditional statements
 
 #include<iostream>
 using namespace std ;
@@ -6,9 +6,9 @@ using namespace std ;
 
 int main(){
 
-//int budget;
-//cout<<"enter your budget :";
-//cin>>budget;
+// int budget;
+// cout<<"enter your budget :";
+// cin>>budget;
 
 // if condition- it is used to check the condition and if the condition is true then it will execute the code inside the if block otherwise it will not execute the code inside the if block.
 // if(budget>2000000)
