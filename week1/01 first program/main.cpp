@@ -1,4 +1,4 @@
-//today we will learn how to print something 
+// today we will learn how to print something 
 #include<iostream>
 using namespace std;
 
