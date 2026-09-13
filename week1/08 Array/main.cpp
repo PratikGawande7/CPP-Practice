@@ -188,3 +188,18 @@ int main() {
 
 	return 0;
 }
+
+// -----------------------------------------------------------------------------
+// Homework given by Love Babbar
+// -----------------------------------------------------------------------------
+
+// 1. Write a function to populate an array with multiples of 10.
+
+// 2. Initialize an array with -1 in each block.
+//    Try doing this using a for loop and also explore memset().
+
+// 3. Print the sum of all elements of an array.
+
+// 4. Write a function to reverse an array.
+
+// 5. Flip 1 to 0 and 0 to 1 in an array.
