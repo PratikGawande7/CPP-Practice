@@ -1,91 +1,190 @@
-// Today we will learn about arrays.
+// Today we will learn about one-dimensional and two-dimensional arrays.
 
 #include <iostream>
 using namespace std;
 
 // An array is a collection of elements of the same data type.
-// The elements are stored in contiguous memory locations.
+// It allows us to store many values using one variable name.
 
-// Why do we use arrays?
-// If we need to store many related values, an array lets us use one name
-// instead of creating a separate variable for every value.
+// Why do we need arrays?
+// If we need to store 400, 10,000, or 1,000,000 numbers, creating
+// separate variables for every number is impractical.
+// An array allocates space for many values in a single line of code.
 
-// Array declaration:
+// -----------------------------------------------------------------------------
+// 1. Array declaration and initialization
+// -----------------------------------------------------------------------------
+
+// Array declaration syntax:
 // data_type array_name[size];
 // Example:
-// int arr[5];
-// This creates an integer array with space for 5 elements.
-// During declaration, the size is normally required so the compiler knows
+// int arr[8];
+// This creates an integer array with 8 elements.
+
+// The size is normally required during declaration so the compiler knows
 // how much memory to reserve.
+// int arr[]; // Invalid: the compiler cannot determine the size.
 
-// Array initialization:
-// int arr[5] = {1, 2, 3, 4, 5};
-// The values are assigned when the array is created.
+// An array can be initialized while it is declared:
+// int arr[5] = {10, 20, 30, 40, 50};
 
-// During initialization, the size may be omitted because the compiler
-// can count the values and determine the size:
-// int arr[] = {1, 2, 3, 4, 5}; // The size becomes 5.
+// During initialization, the size can be omitted because the compiler
+// counts the provided values:
+// int arr[] = {10, 20, 30}; // The size becomes 3.
 
 // If fewer values are provided than the declared size, the remaining
 // elements are initialized to 0:
-// int numbers[5] = {1, 2}; // {1, 2, 0, 0, 0}
+// int arr[5] = {10, 20, 30}; // {10, 20, 30, 0, 0}
 
-// The size cannot be omitted in a declaration without an initializer:
-// int numbers[]; // Invalid: the compiler cannot determine the size.
+// This initializes every element to 0:
+// int arr[5] = {0};
 
-// Array indexing starts from 0, not 1.
-// For int arr[5], the valid indexes are 0, 1, 2, 3, and 4.
-// arr[0] is the first element and arr[4] is the last element.
+// An uninitialized local array contains indeterminate values.
+// int arr[5]; // Do not read its elements before assigning values.
 
-// Important points:
-// 1. All elements must have the same data type.
-// 2. The size of a normal array is fixed after declaration.
-// 3. The last index is always size - 1.
-// 4. Accessing an invalid index causes undefined behavior.
+// Providing more values than the declared size is invalid:
+// int arr[3] = {10, 20, 30, 40}; // Error: too many initializer values.
 
-int main() {
-	int arr[5] = {1, 2, 3, 4, 5};
+// -----------------------------------------------------------------------------
+// 2. Indexing and traversing an array
+// -----------------------------------------------------------------------------
 
-	// Accessing and changing an element using its index.
-	cout << "First element: " << arr[0] << endl;
-	cout << "Third element: " << arr[2] << endl;
-	arr[2] = 10;
-	cout << "Updated third element: " << arr[2] << endl;
+// Array indexing starts from 0.
+// For int arr[5], valid indexes are 0, 1, 2, 3, and 4.
+// The last valid index is always size - 1.
 
-	// Traversing an array means visiting every element.
-	cout << "Array elements: ";
-	for (int index = 0; index < 5; index++) {
+// arr[0] means the first element, arr[1] means the second element, and so on.
+// Accessing an index outside the valid range causes undefined behavior.
+
+// Traversing means visiting every element, usually with a for loop.
+// The loop condition can be index < size or index <= size - 1.
+
+// -----------------------------------------------------------------------------
+// 3. Functions with one-dimensional arrays
+// -----------------------------------------------------------------------------
+
+// When an array is passed to a function, pass its size as a separate argument.
+// The array does not carry its size automatically in the function parameter.
+// In the parameter int arr[], arr behaves like a pointer to the first element.
+// Therefore, sizeof(arr) inside the function does not give the full array size.
+// Example: printArray(arr, 5);
+void printArray(int arr[], int size) {
+	for (int index = 0; index < size; index++) {
 		cout << arr[index] << " ";
 	}
 	cout << endl;
+}
 
-	// Taking array values from the user.
-	int numbers[5];
-	cout << "Enter 5 numbers: ";
-	for (int index = 0; index < 5; index++) {
-		cin >> numbers[index];
+// Calculate the sum of array elements.
+int calculateSum(int arr[], int size) {
+	int sum = 0;
+
+	for (int index = 0; index < size; index++) {
+		sum = sum + arr[index];
 	}
 
-	cout << "You entered: ";
-	for (int index = 0; index < 5; index++) {
-		cout << numbers[index] << " ";
+	return sum;
+}
+
+// Store the multiplication table of 10 in an array.
+void storeTableOfTen(int arr[], int size) {
+	int count = 1;
+
+	for (int index = 0; index < size; index++) {
+		arr[index] = 10 * count;
+		count++;
 	}
-	cout << endl;
+}
 
-	// sizeof gives the size in bytes.
-	// sizeof(arr) gives the total size of the complete array.
-	// sizeof(arr[0]) gives the size of one element.
-	int arraySize = sizeof(arr) / sizeof(arr[0]);
-	cout << "Number of elements: " << arraySize << endl;
+// Flip every 0 to 1 and every 1 to 0 in a binary array.
+void flipZeroAndOne(int arr[], int size) {
+	for (int index = 0; index < size; index++) {
+		if (arr[index] == 1) {
+			arr[index] = 0;
+		} else {
+			arr[index] = 1;
+		}
+	}
+}
 
-	// The array name represents the address of its first element.
-	// The address of arr[0] and arr are the same address.
-	cout << "Address of first element: " << arr << endl;
-	cout << "Address of first element: " << &arr[0] << endl;
+// -----------------------------------------------------------------------------
+// 4. Two-dimensional arrays
+// -----------------------------------------------------------------------------
 
-	// Invalid examples:
-	// arr[5] = 100;  // Invalid: the last valid index is 4.
-	// arr[-1] = 100; // Invalid: negative indexes are not valid.
+// A two-dimensional array represents data in rows and columns, like a grid.
+// int arr[3][4]; means 3 rows and 4 columns, for 12 total elements.
+
+// An element is accessed using two indexes:
+// arr[row_index][column_index]
+
+// Example:
+// arr[0][0] is the element in the first row and first column.
+// arr[2][3] is the element in the third row and fourth column.
+
+// A two-dimensional array is initialized row by row:
+// int arr[3][4] = {
+//     {10, 20, 30, 40},
+//     {11, 12, 13, 14},
+//     {21, 22, 23, 24}
+// };
+
+// Traversing a 2D array requires nested loops:
+// the outer loop handles rows and the inner loop handles columns.
+void print2DArray(int arr[][4], int rowSize, int columnSize) {
+	for (int row = 0; row < rowSize; row++) {
+		for (int column = 0; column < columnSize; column++) {
+			cout << arr[row][column] << " ";
+		}
+		cout << endl;
+	}
+}
+
+// When a 2D array is passed to a function, the column size must be specified:
+// void print2DArray(int arr[][4], int rows, int columns);
+// The compiler uses the column size to calculate the location of each element.
+// The number of rows can be passed separately as an argument.
+
+int main() {
+	// Traversing and printing an initialized array.
+	int multiplesOfTwo[10] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+	cout << "Multiples of two: ";
+	printArray(multiplesOfTwo, 10);
+
+	// Taking input for every element of an array.
+	int inputArray[5];
+	for (int index = 0; index < 5; index++) {
+		cout << "Enter value for arr[" << index << "]: ";
+		cin >> inputArray[index];
+	}
+
+	cout << "Entered array: ";
+	printArray(inputArray, 5);
+
+	// Calculating the sum of array elements.
+	int numbers[5] = {10, 20, 30, 40, 50};
+	cout << "Total sum: " << calculateSum(numbers, 5) << endl;
+
+	// Storing and printing the multiplication table of 10.
+	int table[10];
+	storeTableOfTen(table, 10);
+	cout << "Table of 10: ";
+	printArray(table, 10);
+
+	// Flipping 0s to 1s and 1s to 0s.
+	int binaryArray[8] = {1, 1, 0, 0, 1, 0, 1, 0};
+	flipZeroAndOne(binaryArray, 8);
+	cout << "Flipped binary array: ";
+	printArray(binaryArray, 8);
+
+	// Initializing and printing a two-dimensional array.
+	int grid[3][4] = {
+		{10, 20, 30, 40},
+		{11, 12, 13, 14},
+		{21, 22, 23, 24}
+	};
+
+	cout << "Two-dimensional array:" << endl;
+	print2DArray(grid, 3, 4);
 
 	return 0;
 }
