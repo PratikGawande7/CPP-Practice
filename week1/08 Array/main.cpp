@@ -201,5 +201,7 @@ int main() {
 // 3. Print the sum of all elements of an array.
 
 // 4. Write a function to reverse an array.
+//    Also find out what swap() is and how it can be used to exchange
+//    two array elements.
 
 // 5. Flip 1 to 0 and 0 to 1 in an array.
