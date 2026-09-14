@@ -116,8 +116,19 @@ void incrementCharacterByReference(char &character) {
 	cout << "Inside char pass by reference: " << character << endl;
 }
 
-// Arrays are passed to functions as the address of their first element.
-// Therefore, element changes inside the function affect the original array.
+// Important array rule:
+// Arrays are commonly said to be passed by reference because a function gets
+// access to the original array elements without making a complete array copy.
+// In a normal parameter such as int arr[], the array name decays to a pointer
+// to its first element. That pointer is passed by value, but it points to the
+// original memory, so changing arr[index] changes the caller's array.
+// This happens because arr[index] is equivalent to *(arr + index): the
+// function follows the pointer to the original element and changes that value.
+// The pointer itself is copied, but the array elements are not copied.
+// Therefore, changing arr[index] affects the caller, while changing the local
+// pointer would not change which array the caller owns.
+// The parameter int arr[] is treated like int *arr inside the function.
+// No extra '&' is needed for this behavior.
 // Pass the size separately because the array does not carry its size here.
 //
 // Failed even-count version:
