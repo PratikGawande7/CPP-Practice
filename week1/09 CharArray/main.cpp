@@ -11,6 +11,10 @@ using namespace std;
 
 // A character array stores characters of type char.
 // A group of characters that represents text is called a C-string.
+// Each char normally occupies 1 byte, while an int commonly occupies 4 bytes.
+// Like other arrays, a character array uses zero-based indexing.
+// The exact size of an int is implementation-defined; sizeof(int) tells us
+// its size on the current system. sizeof(char) is always 1 byte in C++.
 
 // Example:
 // char name[20];
@@ -30,6 +34,14 @@ using namespace std;
 // A string literal needs one extra array position for '\0'.
 // char name[5] = "Love"; // Correct: 4 letters + '\0'
 // char name[4] = "Love"; // Incorrect: no space for '\0'
+
+// When manually filling a character array, add '\0' before treating it as a
+// C-string:
+// char letters[4];
+// letters[0] = 'a';
+// letters[1] = 'b';
+// letters[2] = 'c';
+// letters[3] = '\0';
 
 // -----------------------------------------------------------------------------
 // 2. ASCII values and character conversion
@@ -173,6 +185,9 @@ bool compareArray(char a[], char b[]) {
 
 // The destination array must always have enough space when using strcpy()
 // or strcat().
+// These functions do not automatically resize the destination array. If the
+// destination is too small, writing past its end causes undefined behavior.
+// The source and destination must also be valid null-terminated C-strings.
 
 // -----------------------------------------------------------------------------
 // 6. C++ strings
@@ -188,10 +203,32 @@ bool compareArray(char a[], char b[]) {
 // std::string is the C++ string class from the <string> header.
 // It stores text and manages its memory and length automatically.
 // It can also be reassigned and modified using convenient member functions.
+// std::string is a class type, not the built-in char data type. A string object
+// contains a sequence of characters; char stores only one character.
 //
 // Example:
 // char characterArray[] = "Love"; // C-string: includes '\0'
 // string cppString = "Love";      // C++ string object
+//
+// A std::string can be declared first and built one character at a time:
+// string name;
+// name.push_back('a');
+// name.push_back('b');
+// name.push_back('c');
+// cout << name; // Prints abc
+//
+// A character array also allows individual elements to be assigned:
+// char arr[100];
+// arr[0] = 'a';
+// arr[1] = 'b';
+// arr[2] = 'c';
+// However, arr must contain '\0' before it can safely be printed as a
+// C-string. For example: arr[3] = '\0';
+//
+// A std::string can be initialized and reassigned directly:
+// string surname = "Babbar";
+// surname = "Love";
+// A character array cannot be reassigned this way after declaration.
 //
 // Main differences:
 // - A character array has a fixed size; std::string can grow or shrink.
@@ -199,6 +236,8 @@ bool compareArray(char a[], char b[]) {
 //   std::string manages its internal storage automatically.
 // - A character array cannot be directly reassigned after declaration;
 //   std::string can be reassigned directly.
+// - A character array has no built-in length or capacity management;
+//   std::string provides size(), length(), and capacity-related operations.
 // - std::string provides functions such as length(), find(), substr(),
 //   and insert() for common string operations.
 
@@ -217,9 +256,17 @@ bool compareArray(char a[], char b[]) {
 
 // Important string functions:
 // str.length() or str.size() returns the string length.
+// str.push_back(character) appends one character.
+// str.append(text) appends text to the end of the string.
 // str.find(target) searches for target and returns its starting index.
 // str.substr(start, length) returns a part of the string.
 // str.insert(position, text) inserts text at a position.
+// str.compare(other) compares two strings lexicographically and returns 0
+// when they are equal.
+
+// std::string can contain an embedded '\0' character, but C-string functions
+// stop at the first '\0'. For normal text, this distinction is usually not
+// visible. Use std::string::size() to get the full std::string length.
 
 // string::npos means that find() did not find the requested text.
 // It is a special value of type string::size_type, not a normal index.
