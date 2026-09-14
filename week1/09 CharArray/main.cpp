@@ -163,7 +163,12 @@ bool compareArray(char a[], char b[]) {
 // The <cstring> header provides ready-made functions for C-strings:
 // strlen(array)       returns the length, excluding '\0'.
 // strcpy(destination, source) copies source into destination.
-// strcmp(first, second) compares two C-strings and returns 0 if equal.
+// strcmp(first, second) compares two C-strings character by character.
+// It returns:
+// - 0 when both strings are equal.
+// - A negative value when first comes before second.
+// - A positive value when first comes after second.
+// The comparison is based on the character values, such as ASCII values.
 // strcat(destination, source) appends source to destination.
 
 // The destination array must always have enough space when using strcpy()
