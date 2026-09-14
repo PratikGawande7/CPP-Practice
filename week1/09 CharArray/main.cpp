@@ -48,6 +48,9 @@ using namespace std;
 
 // Every character has a numerical ASCII value.
 // For example, 'A' and 'a' have different ASCII values.
+// 'A' to 'Z' have ASCII values 65 to 90.
+// 'a' to 'z' have ASCII values 97 to 122.
+// '0' to '9' have ASCII values 48 to 57.
 
 // Lowercase to uppercase:
 // uppercaseCharacter = lowercaseCharacter - 'a' + 'A';
@@ -57,6 +60,19 @@ using namespace std;
 
 // These formulas work because the uppercase and lowercase letters have
 // the same order in the ASCII table.
+
+// Convert lowercase letters in a complete C-string to uppercase.
+void convertToUppercase(char str[]) {
+	int index = 0;
+
+	while (str[index] != '\0') {
+		if (str[index] >= 'a' && str[index] <= 'z') {
+			str[index] = str[index] - 'a' + 'A';
+		}
+
+		index++;
+	}
+}
 
 // -----------------------------------------------------------------------------
 // 3. cout behavior for int arrays and char arrays
@@ -199,6 +215,11 @@ int main() {
 	char uppercaseCharacter = lowercaseCharacter - 'a' + 'A';
 	cout << "Uppercase character: " << uppercaseCharacter << endl;
 
+	// ASCII conversion for every lowercase letter in a C-string.
+	char wordToConvert[] = "babbar";
+	convertToUppercase(wordToConvert);
+	cout << "Uppercase word: " << wordToConvert << endl;
+
 	// Concatenation using a custom function.
 	char firstName[20] = "Love ";
 	char lastName[] = "Babbar";
@@ -227,6 +248,11 @@ int main() {
 	cout << "Library comparison: "
 		 << (strcmp(source, destination) == 0 ? "Equal" : "Not equal")
 		 << endl;
+
+	// Library concatenation. The destination must have enough unused space.
+	char greeting[20] = "Hello ";
+	strcat(greeting, "Babbar");
+	cout << "Library concatenation: " << greeting << endl;
 
 	return 0;
 }
