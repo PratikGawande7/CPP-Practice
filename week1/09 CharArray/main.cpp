@@ -178,6 +178,30 @@ bool compareArray(char a[], char b[]) {
 // 6. C++ strings
 // -----------------------------------------------------------------------------
 
+// A string is a sequence of characters used to represent text.
+// In C++, text can be stored using a character array or using std::string.
+//
+// A character array used as text is called a C-string when it ends with '\0'.
+// It has a fixed capacity, and we must manage copying, concatenation, and
+// null termination carefully.
+//
+// std::string is the C++ string class from the <string> header.
+// It stores text and manages its memory and length automatically.
+// It can also be reassigned and modified using convenient member functions.
+//
+// Example:
+// char characterArray[] = "Love"; // C-string: includes '\0'
+// string cppString = "Love";      // C++ string object
+//
+// Main differences:
+// - A character array has a fixed size; std::string can grow or shrink.
+// - A character array needs null termination for C-string functions;
+//   std::string manages its internal storage automatically.
+// - A character array cannot be directly reassigned after declaration;
+//   std::string can be reassigned directly.
+// - std::string provides functions such as length(), find(), substr(),
+//   and insert() for common string operations.
+
 // std::string is a C++ class that makes string handling easier.
 // It can grow or shrink at runtime and handles null termination internally.
 
