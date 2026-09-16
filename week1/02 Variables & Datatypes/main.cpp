@@ -55,7 +55,7 @@ double pi=3.141592653;
 // cout<<isFemale<<endl;
 // cout<<isgirl<<endl;
    
-
+// we will learn void datatype later 
 
 // to get the size of the variable we use sizeof() function
 
