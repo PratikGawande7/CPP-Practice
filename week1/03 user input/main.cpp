@@ -1,4 +1,4 @@
-// today we will learn how to take input from the user in C++ using cin and cout
+// today we will learn how to take input from the user in C++ using cin and cout.
 
 #include <iostream>
 using namespace std;

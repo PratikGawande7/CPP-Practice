@@ -57,8 +57,9 @@ double pi=3.141592653;
    
 // we will learn void datatype later 
 
-// to get the size of the variable we use sizeof() function
-
+// to get the size of the variable we use sizeof() function .It tells us how many bytes a variable or datatype occupies in memory.
+//cout<<sizeof(datatype);
+//cout<<sizeof(variable);
 int age=19;
 cout<<sizeof(age)<<endl; // 4 bytes 
 
