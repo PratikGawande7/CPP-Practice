@@ -13,7 +13,7 @@ int main(){
     cout<<"your age is : " << age << endl; // print the input value
 
 
-    // but remember that  cin allow user to give any kind of input based on the datatype they have declared. but in case of boolean datatype it will only accept 0 or 1 as input. if user give any other value like true or false is enter by user then it will be considered as 0.
+    // but remember that cin allow user to give any kind of input based on the datatype they have declared. but in case of boolean datatype it will only accept 0 or 1 as input. if user give any other value like true or false is enter by user then it will be considered as 0.
     
 
     /*

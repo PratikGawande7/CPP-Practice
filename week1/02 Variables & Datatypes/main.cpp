@@ -11,15 +11,16 @@ int main(){
 // cout<<age<<endl;
 
 // declaration meaning-sirf variable declare karna value nahi dalna
-// int age;
-// cout<<age<<endl;(isse koi bhi garbage value store ho jayegi)
+// int age;(isse koi bhi garbage value store ho jayegi)
+
+// cout<<age<<endl;(isse jo bhi garbage value store hogi woh print jayegi)
 
 // definition meaning- variable ko declare karna aur value dalna dono ek sath
 // int age= 19;
 // cout<<age<<endl;
 
 // manipulation or updation of variable- variable ki value ko change karna ya update karna
-// age=20;
+// age=20; (isse 19 erase hokar 20 store ho jayega)
 // cout<<age<<endl;
 
 
