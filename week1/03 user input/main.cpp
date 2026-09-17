@@ -340,3 +340,21 @@ int main(){
 
     return 0;
 }
+
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+User input makes a program interactive instead of giving the same result
+every time. We use cin to receive values typed by the user, such as:
+1. Age, marks, quantity, or other numbers.
+2. Choices in a menu.
+3. Names and other text using getline().
+
+The datatype of the variable tells cin what kind of value to read.
+Use cin >> variable when reading one value or a word.
+Use getline(cin, variable) when reading a complete line that may contain spaces.
+
+When input can be invalid, cin.fail() helps us detect the error.
+After using cin >> before getline(), handle the leftover newline with
+cin.ignore() so getline() can read the next line correctly.
+*/

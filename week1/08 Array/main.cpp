@@ -205,3 +205,26 @@ int main() {
 //    two array elements.
 
 // 5. Flip 1 to 0 and 0 to 1 in an array.
+
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+An array stores many values of the same datatype under one name. It is useful
+when a program needs to keep related data such as marks, prices, scores,
+temperatures, or binary values.
+
+Use an index to access one element. Indexing starts at 0, so for an array of
+size 5 the valid indexes are 0 through 4. A loop is normally used to visit or
+process every element.
+
+Pass an array to a function when you want a separate function to print,
+calculate, update, or search its values. Pass the size as well because a raw
+array does not automatically carry its number of elements.
+
+Use a two-dimensional array when the data has rows and columns, such as a
+table, seating arrangement, game board, or grid. Nested loops are used to
+process its rows and columns.
+
+Always stay within the valid index range. Accessing an invalid index can cause
+undefined behavior and may produce incorrect results or crash the program.
+*/

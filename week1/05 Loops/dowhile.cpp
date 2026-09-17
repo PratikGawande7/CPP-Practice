@@ -44,3 +44,24 @@ for(int i=1;i<=2;i=i+1){
 
 return 0;
 }
+
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+Use a do-while loop when the code must run at least once before the condition
+is checked. This is useful for:
+1. Showing a menu before asking whether the user wants to continue.
+2. Asking for input at least once and repeating until it is valid.
+3. Repeating a game or task until the user chooses to stop.
+
+The main difference is:
+while checks the condition first, so it may run zero times.
+do-while runs the code first, so it always runs at least once.
+
+A nested loop is useful when one repeated task is inside another repeated task.
+For example, nested loops can print rows and columns, create a table, display
+a pattern, or compare every item with other items.
+
+The inner loop completes all of its iterations for each one iteration of the
+outer loop.
+*/

@@ -99,3 +99,25 @@ i=i+1;
 return 0;
 
 }
+
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+Loops repeat code without writing the same instructions many times. They are
+used for tasks such as:
+1. Printing or processing a range of numbers.
+2. Reading and processing many values.
+3. Repeating a menu or task until the user chooses to stop.
+4. Searching through items in an array or other collection.
+
+Use a for loop when you know how many times the loop should run, such as
+printing numbers from 1 to 10. Its initialization, condition, and update are
+written together.
+
+Use a while loop when repetition depends mainly on a condition, such as
+continuing while input is valid. Make sure the condition can eventually become
+false, otherwise the loop will run forever.
+
+break stops the complete loop immediately. continue skips the current
+iteration and moves to the next iteration.
+*/

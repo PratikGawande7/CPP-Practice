@@ -78,3 +78,25 @@ cout<<sizeof(age)<<endl; // 4 bytes
 
 return 0;   
 }
+
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+Variables are named memory locations used to store information in a program.
+For example:
+1. int can store whole numbers such as age, count, or marks.
+2. float or double can store decimal values such as price or percentage.
+3. char can store one character such as a grade or initial.
+4. bool can store a yes/no state and can be used directly in an if condition.
+
+We choose a datatype according to the kind of value we need to store.
+We update variables when information changes, such as increasing a count
+or changing a player's score.
+
+sizeof helps us understand how much memory a datatype or variable uses.
+Scope controls where a variable can be used in the program.
+
+Always give a local variable a value before using it. For example:
+int age = 19;
+An uninitialized local variable does not have a reliable value.
+*/

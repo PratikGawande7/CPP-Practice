@@ -141,3 +141,26 @@ cout<<"your height is short"<<endl;
 
    return 0;
 }
+
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+Control flow lets a program make decisions instead of always running the
+same instructions. Conditions are used for situations such as:
+1. Checking whether a user is old enough to vote.
+2. Checking a password or whether a user is ready.
+3. Giving grades based on marks.
+4. Checking whether a product is available or affordable.
+
+Use if when one condition needs to be checked.
+Use if-else when there are two possible paths.
+Use an if-else-if ladder when there are several choices.
+Use nested if statements when one decision depends on another decision.
+
+An if block runs only when its condition is true. A bool can be used directly:
+if (isReady) means "if it is ready".
+if (!isReady) means "if it is not ready".
+
+The program checks an if-else-if ladder from top to bottom and runs the first
+true block. The order of conditions is therefore important.
+*/

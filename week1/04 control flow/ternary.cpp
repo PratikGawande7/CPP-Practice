@@ -47,4 +47,26 @@ cout<<result;
     return 0;
 }
 
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+The ternary operator is a short way to choose between two values.
+
+condition ? value_if_true : value_if_false;
+
+Read it in English as:
+"If the condition is true, use the first value; otherwise, use the second value."
+
+It is useful when:
+1. There are only two possible results.
+2. We want to assign a value, such as the larger of two numbers.
+3. We want to display one of two short messages.
+
+For example, x > y ? x : y stores x when x is greater; otherwise it stores y.
+
+Use a normal if-else statement when the logic has multiple steps or becomes
+long and difficult to read. The ternary operator should keep simple choices
+short, not replace every if-else statement.
+*/
+
 

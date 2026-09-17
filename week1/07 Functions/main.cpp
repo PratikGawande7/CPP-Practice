@@ -125,3 +125,27 @@ int main() {
 	return 0;
 }
 
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+Functions divide a large program into small tasks that can be reused. For
+example, a program can have separate functions for reading input, calculating
+a total, checking eligibility, and displaying the result.
+
+When creating a function, decide:
+1. What task should this function perform?
+2. What information does it need as parameters?
+3. Should it return a result, or only perform an action?
+
+Use a return value when another part of the program needs the result, such as
+the sum from add() or the temperature from convertIntoCelsius(). Use void
+when the function only performs an action, such as printing a message.
+
+The same function can be called many times with different arguments. This
+avoids duplicate code and makes changes easier because the task is written in
+one place.
+
+A declaration tells the compiler about a function before its use. A definition
+contains the function's actual code, and a function call runs that code.
+*/
+

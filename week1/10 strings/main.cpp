@@ -189,3 +189,27 @@ int main() {
 //    lowercase using ASCII formulas.
 
 // 9. Convert a string containing digits, such as "1234", into an integer.
+
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+std::string is used whenever a program needs to store and work with text,
+such as names, messages, sentences, usernames, or file names.
+
+Compared with a raw character array, std::string is easier because it manages
+its length and memory automatically. It can grow, shrink, and be reassigned
+without manually adding '\0' or choosing a fixed array size.
+
+Use cin >> text when reading one word. Use getline(cin, text) when reading a
+complete line that may contain spaces.
+
+Common practical tasks include:
+1. Checking whether text contains a word with find().
+2. Extracting part of a name or sentence with substr().
+3. Joining text with append() or +=.
+4. Comparing text, such as checking a command or username.
+5. Adding or removing characters with insert(), push_back(), and pop_back().
+
+Remember that string indexes start at 0, and check find() against
+string::npos before using the returned position.
+*/

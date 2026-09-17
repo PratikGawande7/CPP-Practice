@@ -266,3 +266,32 @@ int main() {
 
 	return 0;
 }
+
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+A pointer stores the address of another value. Pointers are useful when a
+program needs to work directly with memory or with data whose lifetime and
+size are decided while the program is running.
+
+Common uses include:
+1. Changing an original variable through its address.
+2. Passing arrays to functions without copying every element.
+3. Allocating a runtime-sized array on the heap.
+4. Moving through array elements with pointer arithmetic.
+5. Building dynamic structures such as linked lists and trees.
+
+Read the symbols carefully:
+&value means "the address of value".
+*pointer means "the value stored at the address in pointer".
+
+Important safety rules:
+1. Initialize an empty pointer with nullptr.
+2. Never dereference nullptr or an uninitialized pointer.
+3. Release memory created with new using delete.
+4. Release memory created with new[] using delete[].
+5. Do not use a pointer after its memory has been released; set it to nullptr.
+
+Pointers provide powerful control, but an incorrect address or missing delete
+can cause crashes, invalid data, or memory leaks.
+*/

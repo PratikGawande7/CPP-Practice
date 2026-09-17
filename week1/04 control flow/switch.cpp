@@ -100,5 +100,23 @@ switch(grade){
     return 0;
 } 
 
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+switch is useful when one value must be compared with several fixed choices.
+For example, it can be used for:
+1. Handling menu choices such as 1 = add and 2 = subtract.
+2. Handling commands in a small console program.
+3. Checking a grade, day number, or menu option.
+4. Selecting an action based on an enum value.
+
+Each case represents one possible value. The matching case runs, and break
+stops the switch so that the next cases do not run accidentally.
+default handles values that do not match any case.
+
+Use switch for exact fixed values. Use if-else when you need ranges,
+comparisons, or more complex conditions such as marks > 90.
+*/
+
 
 

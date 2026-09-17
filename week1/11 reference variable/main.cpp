@@ -296,3 +296,24 @@ int main() {
 //    ref2 = 20;
 //    cout << a << " " << ref1 << " " << ref2 << endl;
 //    // All three names print 20 because they refer to the same value.
+
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+A reference gives another name to an existing variable. It is useful when a
+function must work with the caller's original data instead of a separate copy.
+
+Use pass by reference when a function should:
+1. Update a value, such as increasing a score or changing a name.
+2. Modify elements of an array.
+3. Return an additional result through an output parameter, such as a count.
+4. Avoid copying a large object when the function only needs to work with the
+	existing object.
+
+Use pass by value when the function should work on a separate copy and must not
+change the original variable.
+
+Remember that a reference must be connected to a variable when it is created,
+and it cannot later be connected to a different variable. Both the reference
+and the original name access the same value.
+*/

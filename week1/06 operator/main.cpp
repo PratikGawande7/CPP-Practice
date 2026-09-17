@@ -265,3 +265,27 @@ cout<<!isMale<<endl;
     
     return 0;
 }
+
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+Operators tell the program how to calculate, compare, update, or combine
+values. They are used in almost every program.
+
+1. Arithmetic operators are used for totals, averages, prices, and formulas.
+2. Relational operators compare values in conditions, such as age >= 18.
+3. Logical operators combine conditions, such as checking a username and
+    password together with &&, or accepting either of two choices with ||.
+4. Assignment operators store and update values, such as score += 10.
+5. Increment and decrement operators are useful for loop counters.
+6. Bitwise operators work with the individual bits of integers and are useful
+    for flags, permissions, masks, and low-level programming.
+
+Remember:
+= assigns a value, while == checks whether two values are equal.
+&& and || combine true/false conditions.
+& and | work on the binary bits of integer values.
+
+Use parentheses when an expression may be difficult to read. They make the
+intended order of calculation clear and help avoid mistakes.
+*/

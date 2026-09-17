@@ -270,3 +270,24 @@ int main() {
 
 // 3. Explore strcat() and understand how it appends one C-string to another.
 
+/*
+PRACTICAL USE OF THIS TOPIC:
+
+A character array is used to store text as a sequence of char values. A
+null-terminated character array is called a C-string and can be used for:
+1. Storing names, words, and short messages.
+2. Reading or processing text one character at a time.
+3. Working with older C-style libraries and functions.
+4. Practicing how text is stored in memory.
+
+The '\0' character tells the program where the text ends. Always leave enough
+space for every character plus '\0'. Functions such as strcpy() and strcat()
+do not increase the destination array's size, so the destination must have
+enough capacity before writing into it.
+
+Use indexing or a loop when changing individual characters. Use strlen(),
+strcpy(), strcmp(), and strcat() when their behavior matches the task.
+When a character array is sent to cout, it is printed as text only when it is
+properly null-terminated.
+*/
+
