@@ -1,4 +1,4 @@
-// do-while loop - it work differently then for loop and while loop .In do-while loop first iteration is done withouut considering whether it follow condition or not.even if it is false and dont follow condition still first iteration  will happen
+// do-while loop - it work differently then for loop and while loop .In do-while loop first iteration is done without considering whether it follow condition or not.even if it is false and dont follow condition still first iteration  will happen
 // format of do-while loop
 // initialization;
 // do{

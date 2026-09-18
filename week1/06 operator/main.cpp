@@ -23,7 +23,7 @@ int main() {
     // Example:
     x = 5;
     cout << "Postfix increment: " << x++ << endl;  // prints 5, then x becomes 6
-    cout << "After x++: " << x << endl;
+    cout << "After x++: " << x << endl;     // prints 6
 
     // 2) Decrement operator (--):
     // It decreases the value by 1.
@@ -63,7 +63,7 @@ int main() {
     cout<< a+b <<endl;
     cout<< a-b <<endl;
     cout<< a*b <<endl;
-    cout<< a/b <<endl;
+    cout<< a/b <<endl; //alert about this
     cout<< a%b <<endl; // it print remainder when a is devided by b 
 
     cout<< 5*1.0/2<<endl; // if we do 5/2 the answer comes as 2 instead of 2.5 this is due to typecasting which will be taught after finishing operator
