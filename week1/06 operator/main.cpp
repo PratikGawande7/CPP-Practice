@@ -32,13 +32,13 @@ int main() {
     // Prefix decrement: --x
     // First decrease the value, then use it.
     int y = 10;
-    cout << "Prefix decrement: " << --y << endl;  // y becomes 9
+    cout << "Prefix decrement: " << --y << endl;  // y becomes 9 and 9 is printed
 
     // Postfix decrement: y--
     // First use the current value, then decrease it.
     y = 10;
     cout << "Postfix decrement: " << y-- << endl;  // prints 10, then y becomes 9
-    cout << "After y--: " << y << endl;
+    cout << "After y--: " << y << endl;   // prints 9
 
     // Important difference:
     // ++x and x++ are not the same.
@@ -63,7 +63,7 @@ int main() {
     cout<< a+b <<endl;
     cout<< a-b <<endl;
     cout<< a*b <<endl;
-    cout<< a/b <<endl; //alert about this
+    cout<< a/b <<endl; // alert about this
     cout<< a%b <<endl; // it print remainder when a is devided by b 
 
     cout<< 5*1.0/2<<endl; // if we do 5/2 the answer comes as 2 instead of 2.5 this is due to typecasting which will be taught after finishing operator
@@ -87,7 +87,7 @@ int main() {
 
     // Logical operators 
     // (1) && (logical AND operator)= we know that if we have to check any condition is true or false then we just do if (cond1){} 
-    // but in case if we have to check whether mutiple condition are true or not we use and operator 
+    // but in case if we have to check whether mutiple condition are true or not we use Logical AND operator 
     // format - if (cond1 && cond2 && cond3){}
 // here we know that in case of bool we just dont do if ( cond1==true && cond2==true && cond3 == true ) we just write as above because that is better .
    // example -
