@@ -482,3 +482,17 @@ int main(){
 // - Explicit typecasting is performed manually by the programmer.
 // - Typecasting can be used to control the result of an operation.
 // - Converting from double to int removes the decimal part.
+
+
+
+// ==================== FUNCTIONS HOMEWORK ====================
+// 1. Write a function to print counting from 1 to 10.
+//   
+// 2. Write a function to calculate Simple Interest using P, R, and T.
+//
+// 3. Write a function to print all prime numbers between 1 and 100.
+//
+// 4. Write a function to check voting eligibility (age >= 18).
+//
+// 5. Write an SIP Calculator function using monthly investment,
+//    duration in years, and expected rate of return.
