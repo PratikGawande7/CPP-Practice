@@ -496,3 +496,17 @@ int main(){
 //
 // 5. Write an SIP Calculator function using monthly investment,
 //    duration in years, and expected rate of return.
+
+
+// Answer 1: Print counting from 1 to 10.
+void printCounting() {
+    for (int i = 1; i <= 10; i++) {
+        cout << i << endl;
+    }
+}
+
+// Answer 2: Calculate Simple Interest using P, R, and T.
+double simpleInterest(double P, double R, double T) {
+    double answer = P * R * T / 100;
+    return answer;
+}
