@@ -510,3 +510,168 @@ double simpleInterest(double P, double R, double T) {
     double answer = P * R * T / 100;
     return answer;
 }
+
+// Answer 3: Print all prime numbers between 1 and 100.
+//
+// A prime number is a number greater than 1 that is divisible only by 1
+// and itself.
+//
+// Logic:
+// 1. Check every number from 2 to 100.
+// 2. Try dividing the number by every value from 2 to number - 1.
+// 3. If any division has remainder 0, the number is not prime.
+// 4. If no divisor is found, print the number.
+void printPrimeNumbers() {
+    for (int number = 2; number <= 100; number++) {
+        bool isPrime = true;
+
+        for (int divisor = 2; divisor < number; divisor++) {
+            if (number % divisor == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        if (isPrime) {
+            cout << number << endl;
+        }
+    }
+}
+
+// Detailed explanation:
+//
+// WHAT IS A PRIME NUMBER?
+// A prime number is a number greater than 1 that has exactly two factors:
+// 1. 1
+// 2. The number itself
+//
+// Examples:
+// - 2: divisible by 1 and 2, so prime
+// - 3: divisible by 1 and 3, so prime
+// - 5: divisible by 1 and 5, so prime
+// - 7: divisible by 1 and 7, so prime
+//
+// Not prime:
+// - 4: divisible by 1, 2, and 4
+// - 8: divisible by 1, 2, 4, and 8
+// - 9: divisible by 1, 3, and 9
+//
+// 1 is not prime because it has only one factor.
+//
+// HOW DOES % HELP?
+// The modulus operator gives the remainder:
+//
+// number % divisor
+//
+// Examples:
+// 7 % 2 = 1
+// 8 % 2 = 0
+//
+// If the remainder is 0, the number divides exactly.
+// Therefore:
+//
+// if (number % divisor == 0)
+//
+// means:
+// If number is exactly divisible by divisor, then it is not prime.
+//
+// COMPLETE LOGIC:
+// 1. The outer loop checks every number from 2 to 100.
+// 2. The inner loop tries possible divisors for that number.
+// 3. If any divisor gives remainder 0, the number is not prime.
+// 4. If no divisor is found, the number is printed.
+//
+// OUTER LOOP:
+//
+// for (int number = 2; number <= 100; number++)
+//
+// This checks every number from 2 through 100.
+// We start at 2 because 1 is not prime.
+//
+// isPrime VARIABLE:
+//
+// bool isPrime = true;
+//
+// At the beginning, we assume that the number is prime.
+// For every new number, isPrime must be reset:
+//
+// Check 2: isPrime = true
+// Check 3: isPrime = true
+// Check 4: isPrime = true
+//
+// That is why isPrime is inside the outer loop.
+//
+// INNER LOOP:
+//
+// for (int divisor = 2; divisor < number; divisor++)
+//
+// This tries possible divisors from 2 up to one less than the number.
+//
+// WHEN THE NUMBER IS NOT PRIME:
+// For number = 8:
+//
+// 8 % 2 = 0
+//
+// A divisor was found, so:
+//
+// isPrime = false;
+//
+// Now we know that 8 is not prime.
+//
+// WHY USE break?
+// Once we find one divisor, we already know that the number is not prime.
+// There is no need to continue checking other divisors.
+// For 8, finding that 8 % 2 == 0 is enough.
+//
+// WHY PRINT AFTER THE INNER LOOP?
+// The correct position is:
+//
+// if (isPrime) {
+//     cout << number << endl;
+// }
+//
+// This must be after the inner loop because we do not know whether the
+// number is prime until all possible divisors have been checked.
+//
+// If cout is placed inside the inner loop, the number may be printed many
+// times before all divisors have been checked.
+//
+// EXAMPLE: CHECKING 7
+//
+// number = 7
+// isPrime = true
+//
+// divisor = 2: 7 % 2 = 1
+// divisor = 3: 7 % 3 = 1
+// divisor = 4: 7 % 4 = 3
+// divisor = 5: 7 % 5 = 2
+// divisor = 6: 7 % 6 = 1
+//
+// No divisor was found, so isPrime is still true and 7 is printed.
+//
+// EXAMPLE: CHECKING 9
+//
+// number = 9
+// isPrime = true
+//
+// divisor = 2: 9 % 2 = 1
+// divisor = 3: 9 % 3 = 0
+//
+// A divisor was found:
+//
+// isPrime = false;
+// break;
+//
+// Since isPrime is false, 9 is not printed.
+//
+// The output starts like this:
+// 2
+// 3
+// 5
+// 7
+// 11
+// 13
+// 17
+// 19
+// 23
+// 29
