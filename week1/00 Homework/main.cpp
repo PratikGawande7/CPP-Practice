@@ -675,3 +675,12 @@ void printPrimeNumbers() {
 // 19
 // 23
 // 29
+
+// Answer 4: Check voting eligibility.
+void eligibilityForVote(int age) {
+    if (age >= 18) {
+        cout << "You are eligible to vote." << endl;
+    } else {
+        cout << "You are not eligible to vote." << endl;
+    }
+}
