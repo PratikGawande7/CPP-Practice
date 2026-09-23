@@ -277,6 +277,7 @@
 
 // homework 
 #include<iostream>
+#include<cmath>
 using namespace std;
 
 
@@ -683,4 +684,29 @@ void eligibilityForVote(int age) {
     } else {
         cout << "You are not eligible to vote." << endl;
     }
+}
+
+// Answer 5: Calculate the final amount of a monthly SIP investment.
+//
+// monthlyInvestment = amount invested every month
+// durationInYears = investment duration in years
+// annualReturnRate = expected yearly return in percentage
+//
+// Formula:
+// final amount = P * (((1 + r)^n - 1) / r) * (1 + r)
+// P = monthly investment, r = monthly return rate, n = total months
+double sipCalculator(double monthlyInvestment, int durationInYears,
+                     double annualReturnRate) {
+    int months = durationInYears * 12;
+    double monthlyRate = annualReturnRate / 100 / 12;
+
+    if (monthlyRate == 0) {
+        return monthlyInvestment * months;
+    }
+
+    double finalAmount = monthlyInvestment *
+                         (pow(1 + monthlyRate, months) - 1) /
+                         monthlyRate * (1 + monthlyRate);
+
+    return finalAmount;
 }
