@@ -25,6 +25,7 @@ using namespace std;
 // It can also be initialized using a string literal:
 // char name[] = "Love";
 // The compiler stores: 'L', 'o', 'v', 'e', and '\0'.
+// The size can be omitted here; the compiler infers it, including space for '\0'.
 
 // '\0' is called the null character.
 // It marks the end of a C-string and has ASCII value 0.
@@ -32,7 +33,7 @@ using namespace std;
 
 // A string literal needs one extra array position for '\0'.
 // char name[5] = "Love"; // Correct: 4 letters + '\0'
-// char name[4] = "Love"; // Incorrect: no space for '\0'
+// char name[4] = "Love"; // Error: not enough space for the terminating '\0'
 
 // When manually filling a character array, add '\0' before treating it as a
 // C-string:
@@ -113,12 +114,12 @@ void convertToUppercase(char str[]) {
 // not a complete copy of the array.
 
 // For a null-terminated C-string, the function can find the end by searching
-// for '\0', so a separate length is not needed:
+// for '\0', so a separate length is not needed just to find the text's end:
 // char name[] = "Love Babbar";
 // getLength(name);
 
-// This works only when '\0' is present. If the character array is being used
-// as a raw buffer, or it is not null-terminated, pass its size separately:
+// If it is a raw buffer or may not contain '\0', pass its size separately
+// to avoid reading or writing beyond its bounds:
 // void processCharacters(char arr[], int size);
 
 // For functions that write into a character array, also make sure the
