@@ -1,4 +1,4 @@
-// Today we will learn about one-dimensional and two-dimensional arrays.
+// Today we will learn about one-dimensional and two-dimensional arrays. 
 
 #include <iostream>
 using namespace std;
@@ -129,7 +129,8 @@ void flipZeroAndOne(int arr[], int size) {
 // };
 
 // Traversing a 2D array requires nested loops:
-// the outer loop handles rows and the inner loop handles columns.
+// The outer loop handles rows because we finish each row before moving to the next;
+// the inner loop handles the columns within the current row.
 void print2DArray(int arr[][4], int rowSize, int columnSize) {
 	for (int row = 0; row < rowSize; row++) {
 		for (int column = 0; column < columnSize; column++) {
@@ -139,10 +140,9 @@ void print2DArray(int arr[][4], int rowSize, int columnSize) {
 	}
 }
 
-// When a 2D array is passed to a function, the column size must be specified:
-// void print2DArray(int arr[][4], int rows, int columns);
-// The compiler uses the column size to calculate the location of each element.
-// The number of rows can be passed separately as an argument.
+// A 2D-array function needs a fixed column size, but can accept any number of rows:
+// void print2DArray(int arr[][4], int rows);
+// The compiler uses the column size to locate each element.
 
 int main() {
 	// Traversing and printing an initialized array.
