@@ -758,3 +758,79 @@ double sipCalculator(double monthlyInvestment, int durationInYears,
 
 // 2. Initialize an array with -1 in each block.
 //    Try doing this using a for loop and also explore memset().
+// #include <iostream>
+// #include <cstring> // Required for memset()
+// using namespace std;
+
+// int main() {
+//     int arr1[5];
+//     int arr2[5];
+
+//     // =================================================================
+//     // METHOD 1: Using a 'for' loop
+//     // =================================================================
+//     // A standard loop that visits each index one by one (0 to 4) 
+//     // and manually assigns the value -1 to every element.
+//     for (int i = 0; i < 5; i++) {
+//         arr1[i] = -1;
+//     }
+
+//     // =================================================================
+//     // METHOD 2: Using memset()
+//     // =================================================================
+//     // memset stands for "Memory Set".
+//     // It is a low-level C/C++ function that fills raw memory byte-by-byte.
+//     //
+//     // Syntax: memset( starting_address , byte_value , total_size_in_bytes )
+//     //
+//     // Note: For int arrays, memset ONLY works safely with 0 and -1 because 
+//     // it fills individual bytes, not whole integer numbers!
+//     memset(arr2, -1, sizeof(arr2));
+
+
+//     // --- Printing both arrays to verify the results ---
+//     cout << "Array 1 (for loop): ";
+//     for (int i = 0; i < 5; i++) {
+//         cout << arr1[i] << " ";
+//     }
+//     cout << endl;
+
+//     cout << "Array 2 (memset)  : ";
+//     for (int i = 0; i < 5; i++) {
+//         cout << arr2[i] << " ";
+//     }
+//     cout << endl;
+
+//     return 0;
+// }
+// Use memset() ONLY when filling an integer array with 0 or -1.
+//       For ANY OTHER NUMBER (like 1, 5, 10), DO NOT use memset().
+//
+// 3. Print the sum of all elements of an array.
+// #include <iostream>
+// using namespace std;
+
+// void printarray(int arr[], int size) {
+//     int sum = 0;
+//     for (int index = 0; index <= size - 1; index++) {
+//         sum = sum + arr[index];
+//     }
+//     cout << "Sum: " << sum << endl;
+// }
+
+// int main() {
+//     int arr[] = {1, 2, 3, 4};
+
+//     // Call the function passing the array and its size
+//     printarray(arr, 4);
+
+//     return 0;
+// }
+
+
+
+
+
+// 4. Write a function to reverse an array.
+//    Also find out what swap() is and how it can be used to exchange
+//    two array elements.
