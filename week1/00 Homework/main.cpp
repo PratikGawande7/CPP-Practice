@@ -710,3 +710,51 @@ double sipCalculator(double monthlyInvestment, int durationInYears,
 
     return finalAmount;
 }
+
+
+
+
+
+
+
+// homework of array
+// 1. Write a function to populate an array with multiples of 10.
+// #include<iostream>
+// using namespace std;
+
+// void storemultipleof10(int array[],int size){
+//     int count=1;
+// for(int index=0;index<=size-1;index++){
+
+//     array[index]=10*count; 
+
+
+
+//   count++;  
+// }
+
+
+
+
+    
+// }
+
+
+// int main(){
+
+// int arr[10];
+
+
+
+// storemultipleof10(arr,10);
+
+
+
+
+
+//     return 0;
+// }
+
+
+// 2. Initialize an array with -1 in each block.
+//    Try doing this using a for loop and also explore memset().
