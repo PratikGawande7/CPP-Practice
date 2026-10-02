@@ -14,14 +14,14 @@ int main() {
 
     // Prefix increment( pre-increment ): ++x
     // First increase the value, then use it.
-    // Example:
+    // Example: 
     int x = 5;
     cout << "Prefix increment: " << ++x << endl;  // x becomes 6 and also 6 is printed
 
     // Postfix increment(post-increment ): x++
     // First use the current value, then increase it.
     // Example:
-    x = 5;
+    x = 5; 
     cout << "Postfix increment: " << x++ << endl;  // prints 5, then x becomes 6
     cout << "After x++: " << x << endl;     // prints 6
 
@@ -102,10 +102,10 @@ int main() {
 
 //  (2) || (logical OR operator )= this just work like word 'or' while we are checking condition
 // example -
-bool cond10 = true;
-bool cond20 = 0;
-bool cond30  = 5!=5;
- if (cond1 || cond2 || cond3 ){
+bool condition1 = true;
+bool condition2 = 0;
+bool condition3  = 5!=5;
+ if (condition1 || condition2 || condition3 ){
     cout<<" atleast one condition is true "<<endl;
  }
  else {cout<<" no condition is true "<<endl;
@@ -139,7 +139,7 @@ cout<<!isMale<<endl;
     // number /= value means: number = number / value
     // number %= value means: number = number % value
     number = 10;
-    // number = number+5
+    // number = number+5;
     number += 5;
     cout << "After += 5: " << number << endl;
 

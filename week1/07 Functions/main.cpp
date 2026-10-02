@@ -123,7 +123,6 @@ int main() {
 	//    duration in years, and expected rate of return.
 
 	return 0;
-}
 
 /*
 PRACTICAL USE OF THIS TOPIC:
