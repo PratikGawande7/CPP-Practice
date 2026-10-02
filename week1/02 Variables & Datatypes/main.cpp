@@ -13,7 +13,7 @@ int main(){
 // declaration meaning-sirf variable declare karna value nahi dalna
 // int age;(isse koi bhi garbage value store ho jayegi)
 
-// cout<<age<<endl;(isse jo bhi garbage value store hogi woh print jayegi)
+// cout<<age<<endl;(isse jo bhi garbage value store hogi woh print ho jayegi)
 
 // definition meaning- variable ko declare karna aur value dalna dono ek sath
 // int age= 19;
