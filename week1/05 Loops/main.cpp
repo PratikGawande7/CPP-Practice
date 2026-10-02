@@ -76,6 +76,18 @@ for (int i=1;i<=10;i=i+1){
     }
     cout<<i<<endl;
 }
+
+// Skip an iteration without using continue:
+// Put the code you want to skip inside an if condition.
+// When i is 3, the condition is false, so cout does not run.
+for (int i=1;i<=10;i=i+1){
+    if (i!=3){
+        cout<<i<<endl;
+    }
+}
+// This prints 1, 2, 4, 5, 6, 7, 8, 9, 10.
+// The condition must be checked before cout; checking after cout is too late
+// because the value has already been printed.
   
 // while loop- it is also loop but its format is different from for loop
 // initialization;
