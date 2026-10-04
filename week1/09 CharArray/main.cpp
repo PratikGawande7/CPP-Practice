@@ -107,20 +107,39 @@ void convertToUppercase(char str[]) {
 // 4. Custom character-array functions
 // -----------------------------------------------------------------------------
 
-// When a character array is passed to a function, we usually write:
-// void printName(char arr[])
-// We do not write the size inside the parameter because the array is passed
-// as the address of its first element. The function receives that address,
-// not a complete copy of the array.
-
-// For a null-terminated C-string, the function can find the end by searching
-// for '\0', so a separate length is not needed just to find the text's end:
+// Arrays do not pass their size automatically to a function. For example,
+// an int array has no special end marker, so pass its element count:
+// void printNumbers(int arr[], int size);
+//
+// A C-string is different: its '\0' marks the end of its text. A function
+// can search for '\0' to find the text length, so it does not need a separate
+// length argument just to process that text:
+// void printName(char arr[]);
 // char name[] = "Love Babbar";
-// getLength(name);
-
-// If it is a raw buffer or may not contain '\0', pass its size separately
-// to avoid reading or writing beyond its bounds:
+// printName(name);
+//
+// The '\0' is still one array element, but it is not part of the text.
+// For example, "cat" has text length 3 and needs 4 array elements including
+// '\0'. getLength(name) returns the text length, not the array's capacity.
+//
+// This only works when the character array is guaranteed to contain '\0'.
+// For a raw character buffer that may not contain it, pass the capacity:
 // void processCharacters(char arr[], int size);
+//
+// If size is passed, it means the array capacity. Valid indexes are always
+// 0 through size - 1 for both int and char arrays. For a C-string, stop at
+// '\0' as well, because the text may end before the array is full:
+// void printName(char arr[], int size) {
+//     for (int i = 0; i < size && arr[i] != '\0'; i++) {
+//         cout << arr[i];
+//     }
+// }
+// char shortName[20] = "Hi"; // '\0' is at index 2, not index 19
+// printName(shortName, 20);
+//
+// Do not use size - 2 as the general last index for a C-string. That would
+// only fit a string that has exactly size - 1 text characters. The '\0' check
+// handles where the text ends; size prevents going beyond the array.
 
 // For functions that write into a character array, also make sure the
 // destination array has enough capacity to hold the characters and '\0'.
@@ -291,4 +310,3 @@ strcpy(), strcmp(), and strcat() when their behavior matches the task.
 When a character array is sent to cout, it is printed as text only when it is
 properly null-terminated.
 */
-
