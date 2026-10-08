@@ -190,7 +190,11 @@ void copyArray(char actual[], char copy[]) {
 	copy[copyIndex] = '\0';
 }
 
-// Compare two character arrays character by character.
+// Compare two null-terminated character arrays character by character.
+//
+// This version uses ||, meaning the loop continues while at least one string
+// has not reached '\0'. If only one string ends, the next comparison is
+// '\0' versus a non-null character, so the function returns false.
 bool compareArray(char a[], char b[]) {
 	int aIndex = 0;
 	int bIndex = 0;
@@ -207,20 +211,54 @@ bool compareArray(char a[], char b[]) {
 	return true;
 }
 
+// The same comparison can be written using &&: continue only while both
+// strings still have characters, then check that they ended at the same time.
+// If one string is a prefix of the other, only one current character is '\0',
+// so the final condition returns false.
+//
+// bool compareArray(char a[], char b[]) {
+//     int aIndex = 0;
+//     int bIndex = 0;
+//
+//     while (a[aIndex] != '\0' && b[bIndex] != '\0') {
+//         if (a[aIndex] != b[bIndex]) {
+//             return false;
+//         }
+//         aIndex++;
+//         bIndex++;
+//     }
+//
+//     return a[aIndex] == '\0' && b[bIndex] == '\0';
+// }
+//
+// Both versions assume a and b are valid null-terminated C-strings.
+
 // -----------------------------------------------------------------------------
 // 5. C-string library functions
 // -----------------------------------------------------------------------------
 
-// The <cstring> header provides ready-made functions for C-strings:
-// strlen(array)       returns the length, excluding '\0'.
-// strcpy(destination, source) copies source into destination.
-// strcmp(first, second) compares two C-strings character by character.
-// It returns:
+// The <cstring> header provides ready-made functions for C-strings. These can
+// be used instead of writing the equivalent custom functions above:
+// strlen(array) returns the number of characters before '\0' (it excludes
+// '\0'), like getLength(array).
+//
+// strcpy(destination, source) copies source into destination, including its
+// terminating '\0', like copyArray(source, destination).
+//
+// strcmp(first, second) compares two C-strings character by character, like
+// compareArray(). It returns:
 // - 0 when both strings are equal.
 // - A negative value when first comes before second.
 // - A positive value when first comes after second.
-// The comparison is based on the character values, such as ASCII values.
-// strcat(destination, source) appends source to destination.
+// The comparison is based on character values, such as ASCII values.
+//
+// Unlike compareArray(), strcmp() does not return a bool. Check whether its
+// result is 0 to test if the strings are equal:
+// strcmp(first, second) == 0
+//
+// strcat(destination, source) appends source at destination's existing '\0'
+// and copies source's terminating '\0' too, like
+// concatArray(destination, source).
 
 // The destination array must always have enough space when using strcpy()
 // or strcat().
