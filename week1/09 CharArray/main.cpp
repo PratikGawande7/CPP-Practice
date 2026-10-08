@@ -156,6 +156,10 @@ int getLength(char arr[]) {
 }
 
 // Append the characters of b to the end of a.
+// getLength(a) counts the characters before '\0', so its result is the index
+// where a's '\0' currently sits. Start writing there to replace that terminator
+// with the first character of b. For example, "Love" has length 4, and a[4]
+// is '\0', so appending starts at index 4.
 // The destination array must have enough unused space.
 void concatArray(char a[], char b[]) {
 	int aIndex = getLength(a);
