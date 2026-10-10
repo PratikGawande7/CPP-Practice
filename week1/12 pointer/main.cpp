@@ -37,7 +37,8 @@ using namespace std;
 //
 // A pointer that does not point to an object should be initialized to nullptr:
 // int *ptr = nullptr;
-// nullptr clearly represents an empty pointer in modern C++.
+// nullptr is the special value for an empty pointer; it is not based on the
+// pointer's name. For example, int *nrt = nullptr; also means nrt points to nothing.
 // Older code may use 0 or NULL, but nullptr is safer and preferred.
 
 // -----------------------------------------------------------------------------
