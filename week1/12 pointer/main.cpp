@@ -1,6 +1,7 @@
 // Today we will learn about pointers and dynamic memory allocation.
 
 #include <iostream>
+#include <new>
 using namespace std;
 
 // -----------------------------------------------------------------------------
@@ -80,21 +81,72 @@ void basicPointerExample() {
 // 4. Stack memory and heap memory
 // -----------------------------------------------------------------------------
 
-// Stack memory:
-// - Holds local variables and function-call data.
-// - Variables are automatically removed when their scope ends.
-// - It has a limited size.
+// Simple definitions:
+// - Stack memory is where a function's automatic local variables and
+//   function-call bookkeeping are commonly stored.
+// - Heap memory is memory the program requests dynamically while it is
+//   running, for example with new.
 //
-// Heap memory:
-// - Used for dynamic allocation during runtime.
-// - Memory remains allocated until it is released manually.
-// - It is accessed through pointers.
-// - Forgetting to release it causes a memory leak.
+// What is "function-call bookkeeping"?
+// When one function calls another, the program must remember the called
+// function's parameter values and where to return afterward. For example:
+// void show(int value) {       // value belongs to this call of show()
+//     int localNumber = 10;    // localNumber is created inside show()
+//     cout << value << " " << localNumber << endl;
+// }
+// int main() {
+//     show(5); // While show runs, its call data and localNumber are needed.
+// } // When show returns, its parameter and localNumber are no longer usable.
 //
-// int n;
-// cin >> n;
-// int arr[n]; // Not standard C++ and may overflow the stack for a large n.
-// Use new[] when a runtime-sized array is required.
+// Stack memory in practice:
+// Local variables are managed automatically. When their function/block ends,
+// their lifetime ends too; you do not write delete for them.
+// Example:
+// void useLocalVariable() {
+//     int score = 10; // exists for this function call
+//     cout << score << endl;
+// } // score's lifetime ends here
+//
+// Each program has a limited amount of stack space, and the exact amount
+// depends on the system and program. If a program uses more than is available
+// (for example, with an extremely large local array or very deep recursion),
+// it may stop with a stack overflow. There is no portable C++ command that
+// tells you exactly how much stack space remains; avoid huge local arrays and
+// unbounded recursion.
+//
+// Heap memory in practice:
+// Use dynamic allocation when the amount of memory is decided while the
+// program is running. The memory remains allocated until you release it;
+// returning from the function does not automatically release it.
+// Example:
+// int *ptr = new int(10); // Create an int on the heap; ptr stores its address.
+// cout << *ptr << endl;   // Read the heap int: prints 10.
+// delete ptr;             // Release the heap int.
+// ptr = nullptr;          // Mark ptr as holding no address now.
+// ptr itself may be a local variable; the int created by new is separate.
+//
+// Practical scenario: the user chooses how many scores to store.
+// A fixed local array has a size chosen in the source code:
+// int scores[5]; // Holds exactly 5 ints; cannot resize it later.
+// If the required count is only known after input, request an array at runtime:
+// int count;
+// cin >> count;
+// if (count > 0) {
+//     int *scores = new (std::nothrow) int[count];
+//     if (scores == nullptr) {
+//         cout << "Could not allocate that many scores." << endl;
+//     } else {
+//         scores[0] = 95; // Use the dynamically allocated array.
+//         delete[] scores; // Release an array made with new[].
+//     }
+// }
+// If the request is too large or memory is unavailable, this nothrow form
+// returns nullptr; check it before using scores. Heap memory is limited too.
+// In regular modern C++ programs, std::vector<int> is usually safer and
+// simpler than manually managing new[] and delete[].
+//
+// Standard C++ does not allow int scores[count] when count is only known at
+// runtime. Use std::vector<int> or, in this pointer lesson, new[]/delete[].
 
 // -----------------------------------------------------------------------------
 // 5. Dynamic allocation of one variable
