@@ -27,7 +27,17 @@ using namespace std;
 // Pointer declaration syntax:
 // data_type *pointer_name;
 //
-// The data type tells the compiler what type of value is stored at the address.
+// Here, data_type is the type of value the pointer points to (the value stored
+// at the address), not the type of the address itself:
+// int *intPointer;       // points to an int
+// double *doublePointer; // points to a double
+// char *charPointer;     // points to a char
+//
+// For example, if number is an int, its address should be stored in an int*:
+// int number = 50;
+// int *pointer = &number;
+// A pointer's type should match the type of the object it points to.
+//
 // The * in a declaration says that the variable is a pointer.
 //
 // Address-of operator (&): gives the address of a variable.
@@ -85,8 +95,12 @@ void basicPointerExample() {
 //
 // Stack (simple idea):
 // The stack is like a small work area for a function while it is running.
-// Its local variables live there for a limited time. When the function ends,
-// those variables are finished and C++ cleans them up automatically.
+// In this simple model, local variables are stored there for a limited time.
+// When a function is called, its local variables are created. When the
+// function returns, their lifetimes end and C++ cleans them up automatically.
+// The memory is not necessarily erased; it becomes available to be reused.
+// Local variables in main follow the same idea and remain alive until their
+// scope ends (for main, normally when main returns).
 //
 // Example:
 // void showScore() {
@@ -101,9 +115,14 @@ void basicPointerExample() {
 // 1. It reaches showScore(); in main.
 // 2. It runs the instructions inside showScore. The variable score is made,
 //    and the program prints 10.
-// 3. It reaches the } at the end of showScore. score is no longer needed, so
-//    that local variable goes away.
+// 3. It reaches the } at the end of showScore. score's lifetime ends, so C++
+//    cleans it up and its storage can be reused.
 // 4. The program continues with the line after showScore(); in main.
+//
+// So your understanding is right: this temporary working area is commonly
+// called the stack. This is a useful beginner model; the C++ language itself
+// describes object lifetimes and does not require every local variable to use
+// a physical stack in every implementation.
 //
 // A function is just a named group of instructions. Running showScore(); means
 // "do those instructions here, then continue with the next line." The computer
@@ -113,6 +132,30 @@ void basicPointerExample() {
 // The heap is memory the program asks for while it is running. With new, you
 // get an address to that memory, and you must release it with delete.
 // The memory does not automatically go away just because a function ends.
+//
+// Syntax for one heap value:
+// data_type *pointer_name = new data_type(initial_value);
+// delete pointer_name; // Release memory created with new.
+//
+// Example:
+// int *scorePointer = new int(10);
+// delete scorePointer;
+// scorePointer = nullptr;
+//
+// Syntax for a heap array:
+// data_type *pointer_name = new data_type[number_of_elements];
+// delete[] pointer_name; // Release an array created with new[].
+//
+// Use delete for one value and delete[] for an array. Match the cleanup form
+// to the allocation form.
+//
+// Do not use delete on a pointer to a regular local (stack) variable:
+// int score = 10;
+// int *scorePointer = &score;
+// delete scorePointer; // WRONG: score was not allocated with new.
+// C++ cleans up score when its scope ends; using delete here is undefined
+// behavior. A pointer does not become heap memory just because it stores an
+// address.
 //
 // Example:
 // int *ptr = new int(10); // Make an int on the heap; ptr stores its address.
@@ -202,6 +245,13 @@ void dynamicArrayExample() {
 // 7. Pointer arithmetic
 // -----------------------------------------------------------------------------
 
+// An int pointer can point to the first element of an int array:
+// int numbers[] = {10, 20, 30};
+// int *ptr = numbers; // In this expression, numbers gives the first-element address.
+// *ptr       is numbers[0] (10)
+// *(ptr + 1) is numbers[1] (20)
+// *(ptr + 2) is numbers[2] (30)
+//
 // Pointer arithmetic moves by elements, not by raw bytes.
 // For an int pointer, ptr + 1 moves by sizeof(int) bytes.
 // For a char pointer, ptr + 1 moves by sizeof(char), which is 1 byte.
