@@ -81,54 +81,57 @@ void basicPointerExample() {
 // 4. Stack memory and heap memory
 // -----------------------------------------------------------------------------
 
-// Simple definitions:
-// - Stack memory is where a function's automatic local variables and
-//   function-call bookkeeping are commonly stored.
-// - Heap memory is memory the program requests dynamically while it is
-//   running, for example with new.
+// Two places to think about when a program uses memory:
 //
-// What is "function-call bookkeeping"?
-// When one function calls another, the program must remember the called
-// function's parameter values and where to return afterward. For example:
-// void show(int value) {       // value belongs to this call of show()
-//     int localNumber = 10;    // localNumber is created inside show()
-//     cout << value << " " << localNumber << endl;
-// }
-// int main() {
-//     show(5); // While show runs, its call data and localNumber are needed.
-// } // When show returns, its parameter and localNumber are no longer usable.
+// Stack (simple idea):
+// The stack is like a small work area for a function while it is running.
+// Its local variables live there for a limited time. When the function ends,
+// those variables are finished and C++ cleans them up automatically.
 //
-// Stack memory in practice:
-// Local variables are managed automatically. When their function/block ends,
-// their lifetime ends too; you do not write delete for them.
 // Example:
-// void useLocalVariable() {
-//     int score = 10; // exists for this function call
+// void showScore() {
+//     int score = 10;
 //     cout << score << endl;
-// } // score's lifetime ends here
+// }
 //
-// Each program has a limited amount of stack space, and the exact amount
-// depends on the system and program. If a program uses more than is available
-// (for example, with an extremely large local array or very deep recursion),
-// it may stop with a stack overflow. There is no portable C++ command that
-// tells you exactly how much stack space remains; avoid huge local arrays and
-// unbounded recursion.
+// Imagine main has this line:
+// showScore();
 //
-// Heap memory in practice:
-// Use dynamic allocation when the amount of memory is decided while the
-// program is running. The memory remains allocated until you release it;
-// returning from the function does not automatically release it.
+// The program runs in this order:
+// 1. It reaches showScore(); in main.
+// 2. It runs the instructions inside showScore. The variable score is made,
+//    and the program prints 10.
+// 3. It reaches the } at the end of showScore. score is no longer needed, so
+//    that local variable goes away.
+// 4. The program continues with the line after showScore(); in main.
+//
+// A function is just a named group of instructions. Running showScore(); means
+// "do those instructions here, then continue with the next line." The computer
+// keeps track of which line to continue from; you do not have to manage that.
+//
+// Heap (simple idea):
+// The heap is memory the program asks for while it is running. With new, you
+// get an address to that memory, and you must release it with delete.
+// The memory does not automatically go away just because a function ends.
+//
 // Example:
-// int *ptr = new int(10); // Create an int on the heap; ptr stores its address.
-// cout << *ptr << endl;   // Read the heap int: prints 10.
-// delete ptr;             // Release the heap int.
-// ptr = nullptr;          // Mark ptr as holding no address now.
-// ptr itself may be a local variable; the int created by new is separate.
+// int *ptr = new int(10); // Make an int on the heap; ptr stores its address.
+// cout << *ptr << endl;   // Follow ptr to read the int: prints 10.
+// delete ptr;             // Tell C++ the heap memory is no longer needed.
+// ptr = nullptr;          // ptr now clearly points to nothing.
 //
-// Practical scenario: the user chooses how many scores to store.
-// A fixed local array has a size chosen in the source code:
-// int scores[5]; // Holds exactly 5 ints; cannot resize it later.
-// If the required count is only known after input, request an array at runtime:
+// Here ptr and the int are different things: ptr can be a local variable that
+// goes away when its function ends, while the heap int stays until delete.
+//
+// Quick comparison:
+// - A local variable is made for you and cleaned up when its scope ends.
+// - Memory from new is requested by you and must be released by you.
+// - Both stack and heap have limits; neither has unlimited space.
+//
+// Example: the user chooses how many scores to store.
+// A fixed array has its size written in the code:
+// int scores[5]; // Space for exactly 5 ints.
+// If the count is only known after the program starts, request an array then:
 // int count;
 // cin >> count;
 // if (count > 0) {
@@ -136,16 +139,15 @@ void basicPointerExample() {
 //     if (scores == nullptr) {
 //         cout << "Could not allocate that many scores." << endl;
 //     } else {
-//         scores[0] = 95; // Use the dynamically allocated array.
-//         delete[] scores; // Release an array made with new[].
+//         scores[0] = 95;
+//         delete[] scores; // Use delete[] for an array made with new[].
 //     }
 // }
-// If the request is too large or memory is unavailable, this nothrow form
-// returns nullptr; check it before using scores. Heap memory is limited too.
-// In regular modern C++ programs, std::vector<int> is usually safer and
+// If memory is unavailable, this nothrow form returns nullptr. Check it before
+// using scores. In regular modern C++, std::vector<int> is usually safer and
 // simpler than manually managing new[] and delete[].
 //
-// Standard C++ does not allow int scores[count] when count is only known at
+// Standard C++ does not allow int scores[count] when count is known only at
 // runtime. Use std::vector<int> or, in this pointer lesson, new[]/delete[].
 
 // -----------------------------------------------------------------------------
