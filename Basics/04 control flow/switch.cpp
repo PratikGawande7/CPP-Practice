@@ -59,12 +59,14 @@ switch(grade){
 }
 
 // rule of switch (expression) 
-// expression type- The expression used in a switch statement must be of an integral or enumerated type.
-// Supported data types include:
-// int
-// char
-// enum 
-// Floating-point types such as float or double and complex data types cannot be directly used in a switch expression.Also you cannot use string.
+// expression type - The expression's resulting type must be an integral or
+// enumerated type (after integral promotions). Common examples include int,
+// char, and bool, as well as enum types. char is integral, so a character such
+// as 'A' can be matched with a case label such as case 'A'.
+// It is not true that only float and double are disallowed: floating-point
+// types, pointers, strings, and class types such as std::complex cannot be
+// used directly as the switch expression. The expression itself can be more
+// than a single variable, as long as its resulting type meets this rule.
 
 // unique case values- dont take same case again again with diferent outputs.
 
@@ -117,6 +119,4 @@ default handles values that do not match any case.
 Use switch for exact fixed values. Use if-else when you need ranges,
 comparisons, or more complex conditions such as marks > 90.
 */
-
-
 
