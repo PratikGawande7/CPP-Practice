@@ -332,18 +332,28 @@ int main() {
 // 1. Look up the ASCII table and observe the values of uppercase and
 //    lowercase characters.
 // Answer: 'A' is 65 and 'a' is 97 in ASCII; both letter ranges have 26
-// consecutive values. The program prints these codes above.
+// consecutive values. For example, this prints their numeric codes:
+// cout << static_cast<int>('A') << " " << static_cast<int>('a') << endl;
+// The program runs this example above.
 
 // 2. Try to reassign a character array after declaration:
 //    char name[] = "Babbar";
 //    name = "Love"; // Error: a character array cannot be reassigned directly.
-// Answer: strcpy(name, "Love") copies the new text into the existing array.
-// Ensure the destination has enough space; the example above uses 20 chars.
+// Answer:
+// char name[20] = "Babbar";
+// strcpy(name, "Love");
+// cout << name << endl; // Prints Love.
+// strcpy copies the terminating '\0' too, so the destination must have room
+// for the new text and '\0'. The program runs this example above.
 
 // 3. Explore strcat() and understand how it appends one C-string to another.
-// Answer: strcat(destination, source) appends source at destination's '\0'.
-// The destination must have enough room for both strings and the final '\0';
-// the greeting example above demonstrates this.
+// Answer:
+// char greeting[20] = "Hello ";
+// strcat(greeting, "Babbar");
+// cout << greeting << endl; // Prints Hello Babbar.
+// strcat appends at the destination's '\0'. The destination must have enough
+// space for the original text, appended text, and final '\0'. The program
+// runs this example above.
 
 /*
 PRACTICAL USE OF THIS TOPIC:

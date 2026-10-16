@@ -196,20 +196,31 @@ void storeTableOfTen(int arr[], int size) {
 
 // 2. Initialize an array with -1 in each block.
 //    Try doing this using a for loop and also explore memset().
-// Answer using a loop:
+// Answer 1: the portable way is to assign each int in a loop:
 void fillWithMinusOne(int arr[], int size) {
 	for (int index = 0; index < size; index++) {
 		arr[index] = -1;
 	}
 }
-// Answer using memset (commonly works for -1 on systems using all-bits-one
-// for -1, but the loop above is the portable way to set int values):
+
+// memset syntax:
+// std::memset(starting_address, byte_value, number_of_bytes);
+// It is declared in <cstring>. It writes the same byte_value to each byte;
+// it does not assign an int value separately to each array element.
+//
+// Answer 2 for this int array (works on common systems where -1 is represented
+// by all bits set; the loop above is portable across C++ implementations):
 void fillWithMinusOneUsingMemset(int arr[], int size) {
 	if (size > 0) {
-		std::memset(arr, -1, size * sizeof(arr[0]));
+		std::memset(arr, 0xFF, size * sizeof(arr[0]));
 	}
 }
-// Example: int values[3]; fillWithMinusOne(values, 3); // {-1, -1, -1}
+// Example:
+// int values[3];
+// fillWithMinusOne(values, 3);
+// std::memset(values, 0xFF, sizeof(values));
+// Both examples commonly produce {-1, -1, -1}. Do not use memset(arr, -1, ...)
+// to set arbitrary int values such as 1 or 5.
 
 // 3. Print the sum of all elements of an array.
 // Answer:

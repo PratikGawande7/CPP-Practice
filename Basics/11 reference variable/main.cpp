@@ -310,7 +310,9 @@ int main() {
 //
 // 3. Uninitialized reference error:
 //    int &temp; // Compilation error: reference declared but not initialized.
-// Answer: initialize it immediately, for example: int value = 5; int &temp = value;
+// Answer:
+// int value = 5;
+// int &temp = value; // Correct: initialize the reference at declaration.
 //
 // 4. Chained reference variables:
 //    int a = 5;

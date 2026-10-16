@@ -217,17 +217,26 @@ int main() {
 // reassignedName from "Babbar" to "Love".
 
 // 2. Take a full name as input using getline().
-// Answer: readFullName() calls getline(cin, fullName), so spaces are preserved.
+// Answer:
 string readFullName() {
 	string fullName;
 	getline(cin, fullName);
 	return fullName;
 }
+// In main: string fullName = readFullName();
+// getline reads the whole line, including spaces.
 
 // 3. Find out what value string::npos represents and why find() uses it.
 // Answer: npos means "no position"; find() returns it when there is no match.
-// Check for npos before treating the result as an index. The search examples
-// near the start of main() demonstrate both a match and a missing target.
+// Check it before using the result as an index:
+// string text = "hello";
+// string::size_type position = text.find("ll");
+// if (position != string::npos) {
+//     cout << "Found at index " << position << endl;
+// } else {
+//     cout << "Not found" << endl;
+// }
+// The search examples near the start of main() demonstrate both outcomes.
 
 // 4. Reverse a string using two indexes and swap().
 // Answer:
@@ -271,7 +280,7 @@ void countVowelsAndConsonants(const string &text, int &vowels,
 }
 
 // 7. Check whether two strings are valid anagrams.
-// Answer (case-sensitive and includes spaces):
+// Answer (case-sensitive and includes spaces; sort both strings, then compare):
 bool areAnagrams(string first, string second) {
 	sort(first.begin(), first.end());
 	sort(second.begin(), second.end());
@@ -292,11 +301,12 @@ void toggleLetterCase(string &text) {
 }
 
 // 9. Convert a string containing digits, such as "1234", into an integer.
-// Answer: stoi converts the digit string to an integer. It throws an exception
-// if the input is not a valid integer or the value is out of range.
+// Answer:
 int convertDigitsToInteger(const string &digits) {
 	return stoi(digits);
 }
+// Example: int number = convertDigitsToInteger("1234"); // number is 1234.
+// stoi throws an exception if the input is invalid or outside the int range.
 
 /*
 PRACTICAL USE OF THIS TOPIC:

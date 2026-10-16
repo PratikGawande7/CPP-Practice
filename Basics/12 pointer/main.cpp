@@ -330,32 +330,47 @@ void multiplePointerExample() {
 //    int number = 5;
 //    void *ptr = &number;
 //    cout << *(static_cast<int *>(ptr)) << endl;
-// Answer: the program prints 42 through a void pointer after converting it
-// back to int*.
+// Answer: the program uses pointedValue = 42 and prints
+// *static_cast<int *>(genericPointer), which is 42. A void* cannot be
+// dereferenced directly because its pointed-to type is unknown.
 //
 // 2. Array of pointers versus pointer to an array:
 //    int *pointerArray[5]; // Array containing 5 int pointers.
 //    int (*arrayPointer)[5]; // Pointer to an array of 5 integers.
-// Answer: the program prints the same two values through each declaration;
-// pointerArray stores separate int pointers, while arrayPointer points to
-// the complete two-element array.
+// Answer:
+// int values[2] = {10, 20};
+// int *pointerArray[2] = {&values[0], &values[1]};
+// int (*arrayPointer)[2] = &values;
+// cout << *pointerArray[0] << " " << *pointerArray[1] << endl; // 10 20
+// cout << (*arrayPointer)[0] << " " << (*arrayPointer)[1] << endl; // 10 20
+// pointerArray is an array of two int pointers; arrayPointer points to the
+// entire array. The program runs this example above.
 //
 // 3. Dangling pointer:
 //    int *ptr = new int(10);
 //    delete ptr;
 //    ptr = nullptr; // Do not use the old address after delete.
-// Answer: after delete, set the pointer to nullptr and never dereference it.
+// Answer:
+// int *ptr = new int(10);
+// delete ptr;
+// ptr = nullptr; // Safe empty state; do not dereference after delete.
 // The program demonstrates this safely.
 //
 // 4. Inspect an array's behavior in a function:
 //    Create an integer array, change an element inside a function, and print
 //    the array in main to verify that the original element changed.
-// Solution: changeArrayElement(numbers, 3) changes numbers[0] to 99; main()
-// calls it and prints the updated element.
+// Answer: changeArrayElement(numbers, 3) sets numbers[0] to 99. The function
+// receives the array's first-element address, so it modifies the original:
+// int numbers[] = {1, 2, 3};
+// changeArrayElement(numbers, 3);
+// cout << numbers[0] << endl; // Prints 99.
 //
 // 5. Compare *ptr + 1 with *(ptr + 1) using an integer array.
-// Answer: for {10, 20, 30}, *ptr + 1 is 11, while *(ptr + 1) is 20.
-// The program prints both expressions.
+// Answer:
+// int values[] = {10, 20, 30};
+// int *ptr = values;
+// cout << *ptr + 1 << endl;   // 11: read first value (10), then add 1.
+// cout << *(ptr + 1) << endl; // 20: move to the next element, then read it.
 //
 // 6. Create a double pointer and a triple pointer and trace every dereference.
 // Answer: multiplePointerExample() prints *ptr, **doublePointer, and
