@@ -8,10 +8,14 @@ You already know built-in data types such as int, float, double, char, and
 bool. Each describes a kind of value. But a student is more than one value:
 a student can have a name, age, weight, and height.
 
-A class lets us define our own data type and group related information and
-actions. More precisely, C++ calls this a user-defined class type. Its
-variables are called data members, and its functions are called member
-functions.
+A class lets us define our own user-defined data type and group related
+information and actions. Its variables are called data members, and its
+functions are called member functions.
+
+For example, if we wanted one custom data type to bundle an integer, a
+character, and a true/false value, we could define a class with an int, char,
+and bool data member. A Student can similarly bundle several integers and
+a string.
 
 2. Class vs. object: blueprint vs. real thing
 
@@ -46,8 +50,9 @@ members are public by default.
 
 4. Writing a class
 
-Use the class keyword, then a name and a body. Do not miss the semicolon
-after the closing brace:
+Use the class keyword, then a name and a body. Class names are commonly
+written in CamelCase, such as Student. Do not miss the semicolon after the
+closing brace:
 
     class Student {
         // members go here
@@ -83,7 +88,8 @@ DYNAMIC OBJECT:
 
 new creates the object with dynamic storage duration and gives back its
 address. The pointer s stores that address. Access members with ->:
-s->age. This is shorthand for (*s).age.
+s->age. This is shorthand for (*s).age. `new Student()` is another way to
+write the no-argument construction.
 
 A raw new object is not cleaned up just because the pointer goes out of
 scope. Call delete s exactly once when done; that destroys the object and
@@ -104,6 +110,10 @@ Constructor rules:
 DEFAULT CONSTRUCTOR:
 A constructor that can be called without passing arguments. Example:
 Student s;
+
+In the lecture's example, this constructor sets age to 0, weight to 3,
+height to 45, and name to "dummy". These are just chosen starting values;
+the constructor can initialize members with other suitable values.
 
 PARAMETERIZED CONSTRUCTOR:
 A constructor that receives values. Example:
@@ -187,7 +197,7 @@ public:
     string name;
 
     // Default constructor: used when no starting details are supplied.
-    Student() : age(0), height(0), weight(0), name("Unknown") {
+    Student() : age(0), height(45), weight(3), name("dummy") {
         cout << "Default constructor: setting up a Student\n";
     }
 
