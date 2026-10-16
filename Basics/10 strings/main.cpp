@@ -1,8 +1,19 @@
 // Today we will learn about C++ strings.
 
 #include <iostream>
+#include <algorithm>
+#include <cctype>
 #include <string>
 using namespace std;
+
+string readFullName();
+void reverseString(string &text);
+bool isPalindrome(const string &text);
+void countVowelsAndConsonants(const string &text, int &vowels,
+                              int &consonants);
+bool areAnagrams(string first, string second);
+void toggleLetterCase(string &text);
+int convertDigitsToInteger(const string &digits);
 
 // -----------------------------------------------------------------------------
 // 1. C++ strings
@@ -162,6 +173,36 @@ int main() {
 		cout << "Strings are not equal" << endl;
 	}
 
+	// Homework examples:
+	string reassignedName = "Babbar";
+	reassignedName = "Love";
+	cout << "Reassigned string: " << reassignedName << endl;
+
+	cout << "Enter your full name: ";
+	string fullName = readFullName();
+	cout << "Full name: " << fullName << endl;
+
+	string reversedText = "hello";
+	reverseString(reversedText);
+	cout << "Reversed string: " << reversedText << endl;
+
+	cout << "Is level a palindrome? "
+	     << (isPalindrome("level") ? "yes" : "no") << endl;
+
+	int vowels = 0;
+	int consonants = 0;
+	countVowelsAndConsonants("Hello, C++!", vowels, consonants);
+	cout << "Vowels: " << vowels << ", consonants: " << consonants << endl;
+
+	cout << "Are listen and silent anagrams? "
+	     << (areAnagrams("listen", "silent") ? "yes" : "no") << endl;
+
+	string mixedCase = "Hello World!";
+	toggleLetterCase(mixedCase);
+	cout << "Toggled case: " << mixedCase << endl;
+
+	cout << "Integer from digits: " << convertDigitsToInteger("1234") << endl;
+
 	return 0;
 }
 
@@ -172,72 +213,90 @@ int main() {
 // 1. Try to reassign a character array after declaration:
 //    char name[] = "Babbar";
 //    name = "Love"; // Error: a character array cannot be reassigned directly.
-// Solution: use std::string if the text must be reassigned:
-// string name = "Babbar";
-// name = "Love";
+// Answer: std::string can be reassigned. The executable example above changes
+// reassignedName from "Babbar" to "Love".
 
 // 2. Take a full name as input using getline().
-// Solution:
-// string fullName;
-// getline(cin, fullName);
+// Answer: readFullName() calls getline(cin, fullName), so spaces are preserved.
+string readFullName() {
+	string fullName;
+	getline(cin, fullName);
+	return fullName;
+}
 
 // 3. Find out what value string::npos represents and why find() uses it.
-// Solution: npos means "no position" and is returned by find() when there is
-// no match. Check it before using the result as an index:
-// string::size_type position = text.find(target);
-// if (position != string::npos) { /* found */ }
+// Answer: npos means "no position"; find() returns it when there is no match.
+// Check for npos before treating the result as an index. The search examples
+// near the start of main() demonstrate both a match and a missing target.
 
 // 4. Reverse a string using two indexes and swap().
-// Solution:
-// for (size_t left = 0, right = text.size(); left < right; left++) {
-//     --right;
-//     swap(text[left], text[right]);
-// }
+// Answer:
+void reverseString(string &text) {
+	for (string::size_type left = 0, right = text.size(); left < right; left++) {
+		--right;
+		swap(text[left], text[right]);
+	}
+}
 
 // 5. Check whether a string is a palindrome.
-// Solution:
-// bool isPalindrome = true;
-// for (size_t left = 0, right = text.size(); left < right; left++) {
-//     --right;
-//     if (text[left] != text[right]) {
-//         isPalindrome = false;
-//         break;
-//     }
-// }
+// Answer:
+bool isPalindrome(const string &text) {
+	for (string::size_type left = 0, right = text.size(); left < right; left++) {
+		--right;
+		if (text[left] != text[right]) {
+			return false;
+		}
+	}
+	return true;
+}
 
 // 6. Count the vowels and consonants in a string.
-// Solution (for English letters; ignores spaces, digits, and punctuation):
-// int vowels = 0, consonants = 0;
-// for (char ch : text) {
-//     char lower = static_cast<char>(tolower(static_cast<unsigned char>(ch)));
-//     if (lower >= 'a' && lower <= 'z') {
-//         if (lower == 'a' || lower == 'e' || lower == 'i' ||
-//             lower == 'o' || lower == 'u') {
-//             ++vowels;
-//         } else {
-//             ++consonants;
-//         }
-//     }
-// }
+// Answer (counts English letters and ignores spaces, digits, and punctuation):
+void countVowelsAndConsonants(const string &text, int &vowels,
+                              int &consonants) {
+	vowels = 0;
+	consonants = 0;
+	for (char character : text) {
+		char lower = static_cast<char>(
+		    tolower(static_cast<unsigned char>(character)));
+		if (lower >= 'a' && lower <= 'z') {
+			if (lower == 'a' || lower == 'e' || lower == 'i' ||
+			    lower == 'o' || lower == 'u') {
+				++vowels;
+			} else {
+				++consonants;
+			}
+		}
+	}
+}
 
 // 7. Check whether two strings are valid anagrams.
-// Solution (case-sensitive, including spaces):
-// sort(first.begin(), first.end());
-// sort(second.begin(), second.end());
-// bool areAnagrams = first == second;
+// Answer (case-sensitive and includes spaces):
+bool areAnagrams(string first, string second) {
+	sort(first.begin(), first.end());
+	sort(second.begin(), second.end());
+	return first == second;
+}
 
 // 8. Convert lowercase letters to uppercase and uppercase letters to
 //    lowercase using ASCII formulas.
-// Solution:
-// for (char &ch : text) {
-//     if (ch >= 'a' && ch <= 'z') ch = ch - 'a' + 'A';
-//     else if (ch >= 'A' && ch <= 'Z') ch = ch - 'A' + 'a';
-// }
+// Answer:
+void toggleLetterCase(string &text) {
+	for (char &character : text) {
+		if (character >= 'a' && character <= 'z') {
+			character = character - 'a' + 'A';
+		} else if (character >= 'A' && character <= 'Z') {
+			character = character - 'A' + 'a';
+		}
+	}
+}
 
 // 9. Convert a string containing digits, such as "1234", into an integer.
-// Solution: int number = stoi(digits); // Throws if invalid or out of range.
-// Include <algorithm>, <cctype>, and <utility> for the sort(), tolower(), and
-// swap() examples above.
+// Answer: stoi converts the digit string to an integer. It throws an exception
+// if the input is not a valid integer or the value is out of range.
+int convertDigitsToInteger(const string &digits) {
+	return stoi(digits);
+}
 
 /*
 PRACTICAL USE OF THIS TOPIC:

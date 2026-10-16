@@ -212,6 +212,26 @@ int main() {
 	changeFirstElement(numbers);
 	cout << "First array element after function: " << numbers[0] << endl;
 
+	cout << endl << "Reference homework answers:" << endl;
+	int addressExample = 5;
+	int &addressAlias = addressExample;
+	cout << "Reference and original have same address: "
+	     << boolalpha << (&addressExample == &addressAlias) << endl;
+
+	int original = 5;
+	int other = 10;
+	int &alias = original;
+	alias = other;
+	cout << "After alias = other, original: " << original
+	     << ", other: " << other << endl;
+
+	int chainedValue = 5;
+	int &firstAlias = chainedValue;
+	int &secondAlias = firstAlias;
+	secondAlias = 20;
+	cout << "Chained references: " << chainedValue << " "
+	     << firstAlias << " " << secondAlias << endl;
+
 	return 0;
 }
 
@@ -275,7 +295,8 @@ int main() {
 //    int a = 5;
 //    int &temp = a;
 //    cout << &a << " " << &temp << endl;
-//    Verify that both addresses are the same.
+// Answer: both expressions print the same address; the program verifies this
+// with (&addressExample == &addressAlias).
 //
 // 2. Re-binding experiment:
 //    int a = 5;
@@ -284,10 +305,12 @@ int main() {
 //    temp = b;
 //    cout << a << endl; // Prints 10.
 //    cout << temp << endl; // Prints 10.
-//    temp still refers to a; it did not start referring to b.
+// Answer: temp still refers to a. Assignment copies b's value into a; it does
+// not rebind the reference. The program prints original = 10 and other = 10.
 //
 // 3. Uninitialized reference error:
 //    int &temp; // Compilation error: reference declared but not initialized.
+// Answer: initialize it immediately, for example: int value = 5; int &temp = value;
 //
 // 4. Chained reference variables:
 //    int a = 5;
@@ -295,7 +318,7 @@ int main() {
 //    int &ref2 = ref1;
 //    ref2 = 20;
 //    cout << a << " " << ref1 << " " << ref2 << endl;
-//    // All three names print 20 because they refer to the same value.
+// Answer: all three names print 20 because both references alias the same int.
 
 /*
 PRACTICAL USE OF THIS TOPIC:

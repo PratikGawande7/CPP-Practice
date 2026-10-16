@@ -77,56 +77,6 @@ void printArray(int arr[], int size) {
 	cout << endl;
 }
 
-// Calculate the sum of array elements.
-int calculateSum(int arr[], int size) {
-	int sum = 0;
-
-	for (int index = 0; index < size; index++) {
-		sum = sum + arr[index];
-	}
-
-	return sum;
-}
-
-// Store the multiplication table of 10 in an array.
-void storeTableOfTen(int arr[], int size) {
-	int count = 1;
-
-	for (int index = 0; index < size; index++) {
-		arr[index] = 10 * count;
-		count++;
-	}
-}
-
-// Flip every 0 to 1 and every 1 to 0 in a binary array.
-void flipZeroAndOne(int arr[], int size) {
-	for (int index = 0; index < size; index++) {
-		if (arr[index] == 1) {
-			arr[index] = 0;
-		} else {
-			arr[index] = 1;
-		}
-	}
-}
-
-void fillWithMinusOne(int arr[], int size) {
-	for (int index = 0; index < size; index++) {
-		arr[index] = -1;
-	}
-}
-
-void fillWithMinusOneUsingMemset(int arr[], int size) {
-	if (size > 0) {
-		std::memset(arr, -1, size * sizeof(arr[0]));
-	}
-}
-
-void reverseArray(int arr[], int size) {
-	for (int left = 0, right = size - 1; left < right; left++, right--) {
-		std::swap(arr[left], arr[right]);
-	}
-}
-
 // -----------------------------------------------------------------------------
 // 4. Two-dimensional arrays
 // -----------------------------------------------------------------------------
@@ -163,6 +113,13 @@ void print2DArray(int arr[][4], int rowSize, int columnSize) {
 // A 2D-array function needs a fixed column size, but can accept any number of rows:
 // void print2DArray(int arr[][4], int rows);
 // The compiler uses the column size to locate each element.
+
+int calculateSum(int arr[], int size);
+void storeTableOfTen(int arr[], int size);
+void flipZeroAndOne(int arr[], int size);
+void fillWithMinusOne(int arr[], int size);
+void fillWithMinusOneUsingMemset(int arr[], int size);
+void reverseArray(int arr[], int size);
 
 int main() {
 	// Traversing and printing an initialized array.
@@ -229,25 +186,71 @@ int main() {
 // -----------------------------------------------------------------------------
 
 // 1. Write a function to populate an array with multiples of 10.
-// Solution: storeTableOfTen(array, size) fills the array with 10, 20, 30, ...
+// Answer:
+void storeTableOfTen(int arr[], int size) {
+	for (int index = 0; index < size; index++) {
+		arr[index] = 10 * (index + 1);
+	}
+}
+// Example: int table[5]; storeTableOfTen(table, 5); // {10, 20, 30, 40, 50}
 
 // 2. Initialize an array with -1 in each block.
 //    Try doing this using a for loop and also explore memset().
-// Solution: fillWithMinusOne(array, size) uses a loop. Alternatively:
-// memset(array, -1, size * sizeof(array[0]));
-// The <cstring> header is included above; memset fills bytes, not int values.
+// Answer using a loop:
+void fillWithMinusOne(int arr[], int size) {
+	for (int index = 0; index < size; index++) {
+		arr[index] = -1;
+	}
+}
+// Answer using memset (commonly works for -1 on systems using all-bits-one
+// for -1, but the loop above is the portable way to set int values):
+void fillWithMinusOneUsingMemset(int arr[], int size) {
+	if (size > 0) {
+		std::memset(arr, -1, size * sizeof(arr[0]));
+	}
+}
+// Example: int values[3]; fillWithMinusOne(values, 3); // {-1, -1, -1}
 
 // 3. Print the sum of all elements of an array.
-// Solution: cout << calculateSum(array, size) << endl;
+// Answer:
+int calculateSum(int arr[], int size) {
+	int sum = 0;
+	for (int index = 0; index < size; index++) {
+		sum += arr[index];
+	}
+	return sum;
+}
+// Example: int values[3] = {2, 4, 6}; cout << calculateSum(values, 3); // 12
 
 // 4. Write a function to reverse an array.
 //    Also find out what swap() is and how it can be used to exchange
 //    two array elements.
-// Solution: reverseArray(array, size) swaps the elements from both ends inward.
-// std::swap(a, b) exchanges the values stored in a and b.
+// Answer without swap():
+void reverseArray(int arr[], int size) {
+	for (int left = 0, right = size - 1; left < right; left++, right--) {
+		int temp = arr[left];
+		arr[left] = arr[right];
+		arr[right] = temp;
+	}
+}
+// Example: int values[5] = {1, 2, 3, 4, 5}; reverseArray(values, 5);
+// The array is now {5, 4, 3, 2, 1}.
+// std::swap(arr[left], arr[right]) can replace the three temporary-variable
+// assignments when using the swap() approach.
 
 // 5. Flip 1 to 0 and 0 to 1 in an array.
-// Solution: flipZeroAndOne(array, size) changes each bit; see its use above.
+// Answer:
+void flipZeroAndOne(int arr[], int size) {
+	for (int index = 0; index < size; index++) {
+		if (arr[index] == 0) {
+			arr[index] = 1;
+		} else if (arr[index] == 1) {
+			arr[index] = 0;
+		}
+	}
+}
+// Example: int bits[4] = {1, 0, 0, 1}; flipZeroAndOne(bits, 4);
+// The array is now {0, 1, 1, 0}.
 
 /*
 PRACTICAL USE OF THIS TOPIC:

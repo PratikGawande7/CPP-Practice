@@ -330,15 +330,22 @@ void multiplePointerExample() {
 //    int number = 5;
 //    void *ptr = &number;
 //    cout << *(static_cast<int *>(ptr)) << endl;
+// Answer: the program prints 42 through a void pointer after converting it
+// back to int*.
 //
 // 2. Array of pointers versus pointer to an array:
 //    int *pointerArray[5]; // Array containing 5 int pointers.
 //    int (*arrayPointer)[5]; // Pointer to an array of 5 integers.
+// Answer: the program prints the same two values through each declaration;
+// pointerArray stores separate int pointers, while arrayPointer points to
+// the complete two-element array.
 //
 // 3. Dangling pointer:
 //    int *ptr = new int(10);
 //    delete ptr;
 //    ptr = nullptr; // Do not use the old address after delete.
+// Answer: after delete, set the pointer to nullptr and never dereference it.
+// The program demonstrates this safely.
 //
 // 4. Inspect an array's behavior in a function:
 //    Create an integer array, change an element inside a function, and print
@@ -347,11 +354,11 @@ void multiplePointerExample() {
 // calls it and prints the updated element.
 //
 // 5. Compare *ptr + 1 with *(ptr + 1) using an integer array.
-// Solution: with int values[] = {10, 20, 30} and int *ptr = values,
-// *ptr + 1 is 11, while *(ptr + 1) is 20.
+// Answer: for {10, 20, 30}, *ptr + 1 is 11, while *(ptr + 1) is 20.
+// The program prints both expressions.
 //
 // 6. Create a double pointer and a triple pointer and trace every dereference.
-// Solution: multiplePointerExample() prints *ptr, **doublePointer, and
+// Answer: multiplePointerExample() prints *ptr, **doublePointer, and
 // ***triplePointer; each expression reaches the same value, 5.
 
 int main() {
@@ -371,6 +378,31 @@ int main() {
 
 	cout << endl << "Multiple pointers:" << endl;
 	multiplePointerExample();
+
+	cout << endl << "Pointer homework answers:" << endl;
+	int pointedValue = 42;
+	void *genericPointer = &pointedValue;
+	cout << "Value through void pointer: "
+	     << *static_cast<int *>(genericPointer) << endl;
+
+	int pointerValues[2] = {10, 20};
+	int *pointerArray[2] = {&pointerValues[0], &pointerValues[1]};
+	int (*arrayPointer)[2] = &pointerValues;
+	cout << "Array of pointers: " << *pointerArray[0] << " "
+	     << *pointerArray[1] << endl;
+	cout << "Pointer to array: " << (*arrayPointer)[0] << " "
+	     << (*arrayPointer)[1] << endl;
+
+	int *releasedPointer = new int(10);
+	delete releasedPointer;
+	releasedPointer = nullptr;
+	cout << "Pointer cleared after delete: "
+	     << (releasedPointer == nullptr ? "yes" : "no") << endl;
+
+	int arithmeticValues[] = {10, 20, 30};
+	int *arithmeticPointer = arithmeticValues;
+	cout << "*ptr + 1: " << *arithmeticPointer + 1
+	     << ", *(ptr + 1): " << *(arithmeticPointer + 1) << endl;
 
 	// dynamicArrayExample();
 	// Uncomment this call when you want to enter a runtime array size.
