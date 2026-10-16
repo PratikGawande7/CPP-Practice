@@ -1,6 +1,8 @@
 // Today we will learn about one-dimensional and two-dimensional arrays. 
 
 #include <iostream>
+#include <cstring>
+#include <utility>
 using namespace std;
 
 // An array is a collection of elements of the same data type.
@@ -107,6 +109,24 @@ void flipZeroAndOne(int arr[], int size) {
 	}
 }
 
+void fillWithMinusOne(int arr[], int size) {
+	for (int index = 0; index < size; index++) {
+		arr[index] = -1;
+	}
+}
+
+void fillWithMinusOneUsingMemset(int arr[], int size) {
+	if (size > 0) {
+		std::memset(arr, -1, size * sizeof(arr[0]));
+	}
+}
+
+void reverseArray(int arr[], int size) {
+	for (int left = 0, right = size - 1; left < right; left++, right--) {
+		std::swap(arr[left], arr[right]);
+	}
+}
+
 // -----------------------------------------------------------------------------
 // 4. Two-dimensional arrays
 // -----------------------------------------------------------------------------
@@ -164,6 +184,16 @@ int main() {
 	int numbers[5] = {10, 20, 30, 40, 50};
 	cout << "Total sum: " << calculateSum(numbers, 5) << endl;
 
+	int initializedArray[5];
+	fillWithMinusOne(initializedArray, 5);
+	cout << "Array filled with -1: ";
+	printArray(initializedArray, 5);
+
+	int memsetArray[5];
+	fillWithMinusOneUsingMemset(memsetArray, 5);
+	cout << "Array filled with -1 using memset: ";
+	printArray(memsetArray, 5);
+
 	// Storing and printing the multiplication table of 10.
 	int table[10];
 	storeTableOfTen(table, 10);
@@ -175,6 +205,11 @@ int main() {
 	flipZeroAndOne(binaryArray, 8);
 	cout << "Flipped binary array: ";
 	printArray(binaryArray, 8);
+
+	int valuesToReverse[5] = {1, 2, 3, 4, 5};
+	reverseArray(valuesToReverse, 5);
+	cout << "Reversed array: ";
+	printArray(valuesToReverse, 5);
 
 	// Initializing and printing a two-dimensional array.
 	int grid[3][4] = {
@@ -194,17 +229,25 @@ int main() {
 // -----------------------------------------------------------------------------
 
 // 1. Write a function to populate an array with multiples of 10.
+// Solution: storeTableOfTen(array, size) fills the array with 10, 20, 30, ...
 
 // 2. Initialize an array with -1 in each block.
 //    Try doing this using a for loop and also explore memset().
+// Solution: fillWithMinusOne(array, size) uses a loop. Alternatively:
+// memset(array, -1, size * sizeof(array[0]));
+// The <cstring> header is included above; memset fills bytes, not int values.
 
 // 3. Print the sum of all elements of an array.
+// Solution: cout << calculateSum(array, size) << endl;
 
 // 4. Write a function to reverse an array.
 //    Also find out what swap() is and how it can be used to exchange
 //    two array elements.
+// Solution: reverseArray(array, size) swaps the elements from both ends inward.
+// std::swap(a, b) exchanges the values stored in a and b.
 
 // 5. Flip 1 to 0 and 0 to 1 in an array.
+// Solution: flipZeroAndOne(array, size) changes each bit; see its use above.
 
 /*
 PRACTICAL USE OF THIS TOPIC:

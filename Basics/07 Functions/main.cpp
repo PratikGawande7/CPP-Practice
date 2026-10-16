@@ -1,6 +1,7 @@
 // Today we will learn about functions.
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 // A function is a named block of code that performs a specific task.
@@ -92,6 +93,51 @@ void printCounting() {
 	cout << endl;
 }
 
+double simpleInterest(double principal, double rate, double time) {
+	return principal * rate * time / 100.0;
+}
+
+void printPrimeNumbers() {
+	for (int number = 2; number <= 100; number++) {
+		bool isPrime = true;
+
+		for (int divisor = 2; divisor < number; divisor++) {
+			if (number % divisor == 0) {
+				isPrime = false;
+				break;
+			}
+		}
+
+		if (isPrime) {
+			cout << number << " ";
+		}
+	}
+	cout << endl;
+}
+
+bool isEligibleToVote(int age) {
+	return age >= 18;
+}
+
+double sipCalculator(double monthlyInvestment, int durationInYears,
+                     double annualReturnRate) {
+	int months = durationInYears * 12;
+	double monthlyRate = annualReturnRate / 100.0 / 12.0;
+
+	if (months <= 0) {
+		return 0.0;
+	}
+	if (monthlyRate == 0.0) {
+		return monthlyInvestment * months;
+	}
+
+	// The final factor assumes each monthly investment is made at the
+	// beginning of the month.
+	return monthlyInvestment *
+	       (pow(1.0 + monthlyRate, months) - 1.0) / monthlyRate *
+	       (1.0 + monthlyRate);
+}
+
 int main() {
 	// Calling a function and storing its returned value.
 	int sum = add(10, 20);
@@ -121,6 +167,19 @@ int main() {
 	// 4. Write a function to check voting eligibility (age >= 18).
 	// 5. Write an SIP Calculator function using monthly investment,
 	//    duration in years, and expected rate of return.
+	//
+	// Solutions:
+	// 1. printCounting() is demonstrated above.
+	// 2. Calculate interest with simpleInterest(1000, 5, 2).
+	// 3. printPrimeNumbers() prints the prime numbers from 2 through 100.
+	// 4. isEligibleToVote(18) returns true.
+	// 5. sipCalculator(1000, 10, 12) returns the estimated final amount.
+	cout << "Simple interest: " << simpleInterest(1000, 5, 2) << endl;
+	cout << "Prime numbers from 1 to 100: ";
+	printPrimeNumbers();
+	cout << "Eligible to vote: "
+	     << (isEligibleToVote(18) ? "yes" : "no") << endl;
+	cout << "SIP final amount: " << sipCalculator(1000, 10, 12) << endl;
 
 	return 0;
 
@@ -147,4 +206,4 @@ one place.
 A declaration tells the compiler about a function before its use. A definition
 contains the function's actual code, and a function call runs that code.
 */
-
+}

@@ -343,10 +343,16 @@ void multiplePointerExample() {
 // 4. Inspect an array's behavior in a function:
 //    Create an integer array, change an element inside a function, and print
 //    the array in main to verify that the original element changed.
+// Solution: changeArrayElement(numbers, 3) changes numbers[0] to 99; main()
+// calls it and prints the updated element.
 //
 // 5. Compare *ptr + 1 with *(ptr + 1) using an integer array.
+// Solution: with int values[] = {10, 20, 30} and int *ptr = values,
+// *ptr + 1 is 11, while *(ptr + 1) is 20.
 //
 // 6. Create a double pointer and a triple pointer and trace every dereference.
+// Solution: multiplePointerExample() prints *ptr, **doublePointer, and
+// ***triplePointer; each expression reaches the same value, 5.
 
 int main() {
 	cout << "Basic pointer example:" << endl;

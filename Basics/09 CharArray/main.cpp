@@ -325,12 +325,21 @@ int main() {
 
 // 1. Look up the ASCII table and observe the values of uppercase and
 //    lowercase characters.
+// Solution: 'A' is 65 and 'a' is 97 in ASCII; both letter ranges have 26
+// consecutive values. For example, 'a' - 'A' is 32.
 
 // 2. Try to reassign a character array after declaration:
 //    char name[] = "Babbar";
 //    name = "Love"; // Error: a character array cannot be reassigned directly.
+// Solution: copy into an adequately sized array with strcpy(), or use
+// std::string when reassignment is needed:
+// char name[20] = "Babbar";
+// strcpy(name, "Love");
 
 // 3. Explore strcat() and understand how it appends one C-string to another.
+// Solution: strcat(destination, source) appends source at destination's '\0'.
+// The destination must have enough room for both strings and the final '\0';
+// the greeting example above demonstrates this.
 
 /*
 PRACTICAL USE OF THIS TOPIC:

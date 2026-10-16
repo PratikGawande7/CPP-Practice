@@ -172,23 +172,72 @@ int main() {
 // 1. Try to reassign a character array after declaration:
 //    char name[] = "Babbar";
 //    name = "Love"; // Error: a character array cannot be reassigned directly.
+// Solution: use std::string if the text must be reassigned:
+// string name = "Babbar";
+// name = "Love";
 
 // 2. Take a full name as input using getline().
+// Solution:
+// string fullName;
+// getline(cin, fullName);
 
 // 3. Find out what value string::npos represents and why find() uses it.
+// Solution: npos means "no position" and is returned by find() when there is
+// no match. Check it before using the result as an index:
+// string::size_type position = text.find(target);
+// if (position != string::npos) { /* found */ }
 
 // 4. Reverse a string using two indexes and swap().
+// Solution:
+// for (size_t left = 0, right = text.size(); left < right; left++) {
+//     --right;
+//     swap(text[left], text[right]);
+// }
 
 // 5. Check whether a string is a palindrome.
+// Solution:
+// bool isPalindrome = true;
+// for (size_t left = 0, right = text.size(); left < right; left++) {
+//     --right;
+//     if (text[left] != text[right]) {
+//         isPalindrome = false;
+//         break;
+//     }
+// }
 
 // 6. Count the vowels and consonants in a string.
+// Solution (for English letters; ignores spaces, digits, and punctuation):
+// int vowels = 0, consonants = 0;
+// for (char ch : text) {
+//     char lower = static_cast<char>(tolower(static_cast<unsigned char>(ch)));
+//     if (lower >= 'a' && lower <= 'z') {
+//         if (lower == 'a' || lower == 'e' || lower == 'i' ||
+//             lower == 'o' || lower == 'u') {
+//             ++vowels;
+//         } else {
+//             ++consonants;
+//         }
+//     }
+// }
 
 // 7. Check whether two strings are valid anagrams.
+// Solution (case-sensitive, including spaces):
+// sort(first.begin(), first.end());
+// sort(second.begin(), second.end());
+// bool areAnagrams = first == second;
 
 // 8. Convert lowercase letters to uppercase and uppercase letters to
 //    lowercase using ASCII formulas.
+// Solution:
+// for (char &ch : text) {
+//     if (ch >= 'a' && ch <= 'z') ch = ch - 'a' + 'A';
+//     else if (ch >= 'A' && ch <= 'Z') ch = ch - 'A' + 'a';
+// }
 
 // 9. Convert a string containing digits, such as "1234", into an integer.
+// Solution: int number = stoi(digits); // Throws if invalid or out of range.
+// Include <algorithm>, <cctype>, and <utility> for the sort(), tolower(), and
+// swap() examples above.
 
 /*
 PRACTICAL USE OF THIS TOPIC:
