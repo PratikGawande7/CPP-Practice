@@ -1,19 +1,9 @@
 // Today we will learn about C++ strings.
 
 #include <iostream>
-#include <algorithm>
-#include <cctype>
 #include <string>
+#include <utility>
 using namespace std;
-
-string readFullName();
-void reverseString(string &text);
-bool isPalindrome(const string &text);
-void countVowelsAndConsonants(const string &text, int &vowels,
-                              int &consonants);
-bool areAnagrams(string first, string second);
-void toggleLetterCase(string &text);
-int convertDigitsToInteger(const string &digits);
 
 // -----------------------------------------------------------------------------
 // 1. C++ strings
@@ -173,36 +163,6 @@ int main() {
 		cout << "Strings are not equal" << endl;
 	}
 
-	// Homework examples:
-	string reassignedName = "Babbar";
-	reassignedName = "Love";
-	cout << "Reassigned string: " << reassignedName << endl;
-
-	cout << "Enter your full name: ";
-	string fullName = readFullName();
-	cout << "Full name: " << fullName << endl;
-
-	string reversedText = "hello";
-	reverseString(reversedText);
-	cout << "Reversed string: " << reversedText << endl;
-
-	cout << "Is level a palindrome? "
-	     << (isPalindrome("level") ? "yes" : "no") << endl;
-
-	int vowels = 0;
-	int consonants = 0;
-	countVowelsAndConsonants("Hello, C++!", vowels, consonants);
-	cout << "Vowels: " << vowels << ", consonants: " << consonants << endl;
-
-	cout << "Are listen and silent anagrams? "
-	     << (areAnagrams("listen", "silent") ? "yes" : "no") << endl;
-
-	string mixedCase = "Hello World!";
-	toggleLetterCase(mixedCase);
-	cout << "Toggled case: " << mixedCase << endl;
-
-	cout << "Integer from digits: " << convertDigitsToInteger("1234") << endl;
-
 	return 0;
 }
 
@@ -213,22 +173,19 @@ int main() {
 // 1. Try to reassign a character array after declaration:
 //    char name[] = "Babbar";
 //    name = "Love"; // Error: a character array cannot be reassigned directly.
-// Answer: std::string can be reassigned. The executable example above changes
-// reassignedName from "Babbar" to "Love".
+// Answer: a character array cannot be reassigned after declaration. Use
+// std::string if you need to replace its text:
+// string name = "Babbar";
+// name = "Love"; // Valid for std::string.
 
 // 2. Take a full name as input using getline().
 // Answer:
-string readFullName() {
-	string fullName;
-	getline(cin, fullName);
-	return fullName;
-}
-// In main: string fullName = readFullName();
-// getline reads the whole line, including spaces.
+// string fullName;
+// getline(cin, fullName); // Reads the whole line, including spaces.
 
 // 3. Find out what value string::npos represents and why find() uses it.
-// Answer: npos means "no position"; find() returns it when there is no match.
-// Check it before using the result as an index:
+// Answer: string::npos means "no position". find() returns it when the text
+// is not found. Check for npos before using the result as an index:
 // string text = "hello";
 // string::size_type position = text.find("ll");
 // if (position != string::npos) {
@@ -236,77 +193,84 @@ string readFullName() {
 // } else {
 //     cout << "Not found" << endl;
 // }
-// The search examples near the start of main() demonstrate both outcomes.
 
 // 4. Reverse a string using two indexes and swap().
 // Answer:
-void reverseString(string &text) {
-	for (string::size_type left = 0, right = text.size(); left < right; left++) {
-		--right;
-		swap(text[left], text[right]);
-	}
-}
+// void reverseString(string &text) {
+//     for (string::size_type left = 0, right = text.size();
+//          left < right; left++) {
+//         --right;
+//         std::swap(text[left], text[right]);
+//     }
+// }
+// Example: string text = "hello"; reverseString(text); // text is "olleh".
+// std::swap() is declared in the <utility> header, included at the top.
 
 // 5. Check whether a string is a palindrome.
 // Answer:
-bool isPalindrome(const string &text) {
-	for (string::size_type left = 0, right = text.size(); left < right; left++) {
-		--right;
-		if (text[left] != text[right]) {
-			return false;
-		}
-	}
-	return true;
-}
+// bool isPalindrome(const string &text) {
+//     for (string::size_type left = 0, right = text.size();
+//          left < right; left++) {
+//         --right;
+//         if (text[left] != text[right]) {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+// Example: isPalindrome("level") is true; isPalindrome("hello") is false.
 
 // 6. Count the vowels and consonants in a string.
 // Answer (counts English letters and ignores spaces, digits, and punctuation):
-void countVowelsAndConsonants(const string &text, int &vowels,
-                              int &consonants) {
-	vowels = 0;
-	consonants = 0;
-	for (char character : text) {
-		char lower = static_cast<char>(
-		    tolower(static_cast<unsigned char>(character)));
-		if (lower >= 'a' && lower <= 'z') {
-			if (lower == 'a' || lower == 'e' || lower == 'i' ||
-			    lower == 'o' || lower == 'u') {
-				++vowels;
-			} else {
-				++consonants;
-			}
-		}
-	}
-}
+// int vowels = 0;
+// int consonants = 0;
+// for (char character : text) {
+//     char lower = character;
+//     if (lower >= 'A' && lower <= 'Z') {
+//         lower = lower - 'A' + 'a';
+//     }
+//     if (lower >= 'a' && lower <= 'z') {
+//         if (lower == 'a' || lower == 'e' || lower == 'i' ||
+//             lower == 'o' || lower == 'u') {
+//             ++vowels;
+//         } else {
+//             ++consonants;
+//         }
+//     }
+// }
+// Example: for text = "Hello!", vowels is 2 and consonants is 3.
 
 // 7. Check whether two strings are valid anagrams.
-// Answer (case-sensitive and includes spaces; sort both strings, then compare):
-bool areAnagrams(string first, string second) {
-	sort(first.begin(), first.end());
-	sort(second.begin(), second.end());
-	return first == second;
-}
+// Answer (case-sensitive; spaces count as characters):
+// bool areAnagrams(const string &first, const string &second) {
+//     if (first.size() != second.size()) return false;
+//     string unmatched = second;
+//     for (char character : first) {
+//         string::size_type position = unmatched.find(character);
+//         if (position == string::npos) return false;
+//         unmatched.erase(position, 1);
+//     }
+//     return unmatched.empty();
+// }
+// Example: areAnagrams("listen", "silent") is true.
 
 // 8. Convert lowercase letters to uppercase and uppercase letters to
 //    lowercase using ASCII formulas.
 // Answer:
-void toggleLetterCase(string &text) {
-	for (char &character : text) {
-		if (character >= 'a' && character <= 'z') {
-			character = character - 'a' + 'A';
-		} else if (character >= 'A' && character <= 'Z') {
-			character = character - 'A' + 'a';
-		}
-	}
-}
+// for (char &character : text) {
+//     if (character >= 'a' && character <= 'z') {
+//         character = character - 'a' + 'A';
+//     } else if (character >= 'A' && character <= 'Z') {
+//         character = character - 'A' + 'a';
+//     }
+// }
+// Example: "Hello" becomes "hELLO".
 
 // 9. Convert a string containing digits, such as "1234", into an integer.
 // Answer:
-int convertDigitsToInteger(const string &digits) {
-	return stoi(digits);
-}
-// Example: int number = convertDigitsToInteger("1234"); // number is 1234.
-// stoi throws an exception if the input is invalid or outside the int range.
+// string digits = "1234";
+// int number = stoi(digits); // number is 1234.
+// stoi is provided by <string>; invalid or out-of-range input can throw.
 
 /*
 PRACTICAL USE OF THIS TOPIC:

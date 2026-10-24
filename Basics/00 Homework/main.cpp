@@ -462,7 +462,7 @@ int main(){
 // int a = 5;
 // int b = 2;
 // double answer = static_cast<double>(a) / b;
-
+// Important point: This does NOT mean “a becomes float permanently”. It only means “for this expression, use float division”.
 // TYPECASTING A DECIMAL TO AN INTEGER
 // When a decimal value is converted to int, the fractional part is removed.
 // It does not round the value.

@@ -77,6 +77,30 @@ void printArray(int arr[], int size) {
 	cout << endl;
 }
 
+int calculateSum(int arr[], int size) {
+	int sum = 0;
+	for (int index = 0; index < size; index++) {
+		sum += arr[index];
+	}
+	return sum;
+}
+
+void storeTableOfTen(int arr[], int size) {
+	for (int index = 0; index < size; index++) {
+		arr[index] = 10 * (index + 1);
+	}
+}
+
+void flipZeroAndOne(int arr[], int size) {
+	for (int index = 0; index < size; index++) {
+		if (arr[index] == 0) {
+			arr[index] = 1;
+		} else if (arr[index] == 1) {
+			arr[index] = 0;
+		}
+	}
+}
+
 // -----------------------------------------------------------------------------
 // 4. Two-dimensional arrays
 // -----------------------------------------------------------------------------
@@ -114,13 +138,6 @@ void print2DArray(int arr[][4], int rowSize, int columnSize) {
 // void print2DArray(int arr[][4], int rows);
 // The compiler uses the column size to locate each element.
 
-int calculateSum(int arr[], int size);
-void storeTableOfTen(int arr[], int size);
-void flipZeroAndOne(int arr[], int size);
-void fillWithMinusOne(int arr[], int size);
-void fillWithMinusOneUsingMemset(int arr[], int size);
-void reverseArray(int arr[], int size);
-
 int main() {
 	// Traversing and printing an initialized array.
 	int multiplesOfTwo[10] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
@@ -141,16 +158,6 @@ int main() {
 	int numbers[5] = {10, 20, 30, 40, 50};
 	cout << "Total sum: " << calculateSum(numbers, 5) << endl;
 
-	int initializedArray[5];
-	fillWithMinusOne(initializedArray, 5);
-	cout << "Array filled with -1: ";
-	printArray(initializedArray, 5);
-
-	int memsetArray[5];
-	fillWithMinusOneUsingMemset(memsetArray, 5);
-	cout << "Array filled with -1 using memset: ";
-	printArray(memsetArray, 5);
-
 	// Storing and printing the multiplication table of 10.
 	int table[10];
 	storeTableOfTen(table, 10);
@@ -162,11 +169,6 @@ int main() {
 	flipZeroAndOne(binaryArray, 8);
 	cout << "Flipped binary array: ";
 	printArray(binaryArray, 8);
-
-	int valuesToReverse[5] = {1, 2, 3, 4, 5};
-	reverseArray(valuesToReverse, 5);
-	cout << "Reversed array: ";
-	printArray(valuesToReverse, 5);
 
 	// Initializing and printing a two-dimensional array.
 	int grid[3][4] = {
@@ -187,63 +189,64 @@ int main() {
 
 // 1. Write a function to populate an array with multiples of 10.
 // Answer:
-void storeTableOfTen(int arr[], int size) {
-	for (int index = 0; index < size; index++) {
-		arr[index] = 10 * (index + 1);
-	}
-}
+// void storeTableOfTen(int arr[], int size) {
+//     for (int index = 0; index < size; index++) {
+//         arr[index] = 10 * (index + 1);
+//     }
+// }
 // Example: int table[5]; storeTableOfTen(table, 5); // {10, 20, 30, 40, 50}
 
 // 2. Initialize an array with -1 in each block.
 //    Try doing this using a for loop and also explore memset().
 // Answer 1: the portable way is to assign each int in a loop:
-void fillWithMinusOne(int arr[], int size) {
-	for (int index = 0; index < size; index++) {
-		arr[index] = -1;
-	}
-}
+// void fillWithMinusOne(int arr[], int size) {
+//     for (int index = 0; index < size; index++) {
+//         arr[index] = -1;
+//     }
+// }
 
-// memset syntax:
-// std::memset(starting_address, byte_value, number_of_bytes);
-// It is declared in <cstring>. It writes the same byte_value to each byte;
-// it does not assign an int value separately to each array element.
+// Answer 2 using memset:
+// int arr2[5];
+// std::memset(arr2, -1, sizeof(arr2));
 //
-// Answer 2 for this int array (works on common systems where -1 is represented
-// by all bits set; the loop above is portable across C++ implementations):
-void fillWithMinusOneUsingMemset(int arr[], int size) {
-	if (size > 0) {
-		std::memset(arr, 0xFF, size * sizeof(arr[0]));
-	}
-}
-// Example:
-// int values[3];
-// fillWithMinusOne(values, 3);
-// std::memset(values, 0xFF, sizeof(values));
-// Both examples commonly produce {-1, -1, -1}. Do not use memset(arr, -1, ...)
-// to set arbitrary int values such as 1 or 5.
+// Function declaration:
+// void* std::memset(void* destination, int byteValue, std::size_t byteCount);
+//
+// destination: address of the first byte to fill. An array name such as arr2
+// converts to the address of its first element.
+// byteValue: value converted to an unsigned byte and copied into the memory.
+// byteCount: number of bytes to fill, not the number of array elements.
+//
+// In this example, arr2 is the destination, -1 is converted to the byte 255,
+// and sizeof(arr2) gives the byte size of the complete array. If each int is
+// 4 bytes, sizeof(arr2) is 5 * 4 = 20 bytes, covering all five elements.
+//
+// memset repeats bytes; it does not assign an int value element by element.
+// This commonly makes each int -1 on typical systems, but the loop above is
+// the portable way to set int elements to -1. The <cstring> header declares it.
 
 // 3. Print the sum of all elements of an array.
 // Answer:
-int calculateSum(int arr[], int size) {
-	int sum = 0;
-	for (int index = 0; index < size; index++) {
-		sum += arr[index];
-	}
-	return sum;
-}
+// int calculateSum(int arr[], int size) {
+//     int sum = 0;
+//     for (int index = 0; index < size; index++) {
+//         sum += arr[index];
+//     }
+//     return sum;
+// }
 // Example: int values[3] = {2, 4, 6}; cout << calculateSum(values, 3); // 12
 
 // 4. Write a function to reverse an array.
 //    Also find out what swap() is and how it can be used to exchange
 //    two array elements.
 // Answer without swap():
-void reverseArray(int arr[], int size) {
-	for (int left = 0, right = size - 1; left < right; left++, right--) {
-		int temp = arr[left];
-		arr[left] = arr[right];
-		arr[right] = temp;
-	}
-}
+// void reverseArray(int arr[], int size) {
+//     for (int left = 0, right = size - 1; left < right; left++, right--) {
+//         int temp = arr[left];
+//         arr[left] = arr[right];
+//         arr[right] = temp;
+//     }
+// }
 // Example: int values[5] = {1, 2, 3, 4, 5}; reverseArray(values, 5);
 // The array is now {5, 4, 3, 2, 1}.
 // std::swap(arr[left], arr[right]) can replace the three temporary-variable
@@ -251,15 +254,15 @@ void reverseArray(int arr[], int size) {
 
 // 5. Flip 1 to 0 and 0 to 1 in an array.
 // Answer:
-void flipZeroAndOne(int arr[], int size) {
-	for (int index = 0; index < size; index++) {
-		if (arr[index] == 0) {
-			arr[index] = 1;
-		} else if (arr[index] == 1) {
-			arr[index] = 0;
-		}
-	}
-}
+// void flipZeroAndOne(int arr[], int size) {
+//     for (int index = 0; index < size; index++) {
+//         if (arr[index] == 0) {
+//             arr[index] = 1;
+//         } else if (arr[index] == 1) {
+//             arr[index] = 0;
+//         }
+//     }
+// }
 // Example: int bits[4] = {1, 0, 0, 1}; flipZeroAndOne(bits, 4);
 // The array is now {0, 1, 1, 0}.
 

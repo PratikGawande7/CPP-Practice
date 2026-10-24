@@ -316,12 +316,6 @@ int main() {
 	strcat(greeting, "Babbar");
 	cout << "Library concatenation: " << greeting << endl;
 
-	char reassignableName[20] = "Babbar";
-	strcpy(reassignableName, "Love");
-	cout << "Character array after strcpy: " << reassignableName << endl;
-	cout << "ASCII value of A: " << static_cast<int>('A')
-	     << ", ASCII value of a: " << static_cast<int>('a') << endl;
-
 	return 0;
 }
 
@@ -334,7 +328,6 @@ int main() {
 // Answer: 'A' is 65 and 'a' is 97 in ASCII; both letter ranges have 26
 // consecutive values. For example, this prints their numeric codes:
 // cout << static_cast<int>('A') << " " << static_cast<int>('a') << endl;
-// The program runs this example above.
 
 // 2. Try to reassign a character array after declaration:
 //    char name[] = "Babbar";
@@ -344,7 +337,7 @@ int main() {
 // strcpy(name, "Love");
 // cout << name << endl; // Prints Love.
 // strcpy copies the terminating '\0' too, so the destination must have room
-// for the new text and '\0'. The program runs this example above.
+// for the new text and '\0'.
 
 // 3. Explore strcat() and understand how it appends one C-string to another.
 // Answer:
@@ -353,7 +346,7 @@ int main() {
 // cout << greeting << endl; // Prints Hello Babbar.
 // strcat appends at the destination's '\0'. The destination must have enough
 // space for the original text, appended text, and final '\0'. The program
-// runs this example above.
+// must have enough space for both strings.
 
 /*
 PRACTICAL USE OF THIS TOPIC:

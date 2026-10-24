@@ -43,6 +43,7 @@ cin>>grade;
 // case value2:code to be executed if expression equal value2
 // break;
 // case value3: code to be  executed if expression equal value3
+// break;
 // default:code to be executed if none of the case match 
 // }
 switch(grade){
