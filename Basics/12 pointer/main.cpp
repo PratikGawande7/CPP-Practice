@@ -137,6 +137,37 @@ void basicPointerExample() {
 // data_type *pointer_name = new data_type(initial_value);
 // delete pointer_name; // Release memory created with new.
 //
+// -----------------------------------------------------------------------------
+// Important idea: the memory created using new does not have a normal variable name
+// -----------------------------------------------------------------------------
+
+// int x = 10;
+// Here, x is a normal variable and it has a name.
+// The value 10 is stored in a box named x.
+
+// int *ptr = new int(10);
+// Here, new int(10) creates a new memory block on the heap.
+// This memory block is not given a normal variable name like x, y, or score.
+// Instead, the address of that memory block is stored in ptr.
+
+int *ptr = new int(10);
+
+// ptr is the variable name.
+// It stores the address of the newly created memory.
+// We can access the value in that memory using *ptr.
+
+cout << *ptr << endl;  // prints 10
+
+// So the real meaning is:
+// ptr = address of heap memory
+// *ptr = value stored in that heap memory
+
+// We do NOT have a direct name for the heap memory itself.
+// We only access it through the pointer variable ptr.
+
+// After using it:
+delete ptr;
+ptr = nullptr;
 // Example:
 // int *scorePointer = new int(10);
 // delete scorePointer;
