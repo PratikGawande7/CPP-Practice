@@ -168,6 +168,18 @@ cout << *ptr << endl;  // prints 10
 // After using it:
 delete ptr;
 ptr = nullptr;
+// Stack memory can be accessed by name and by pointer.
+// Heap memory created with new has no direct name,
+// so we access it only through the pointer.
+
+// int x = 10;          // stack variable
+// cout << x;           // direct access
+// int *p = &x;
+// cout << *p;          // pointer access
+
+// int *ptr = new int(20);  // heap memory
+// cout << *ptr;            // only through pointer
+
 // Example:
 // int *scorePointer = new int(10);
 // delete scorePointer;
