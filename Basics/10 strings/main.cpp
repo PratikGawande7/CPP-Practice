@@ -91,12 +91,32 @@ using namespace std;
 // - It returns a negative value when str comes before other.
 // - It returns a positive value when str comes after other.
 // The exact negative or positive number is not important; only its sign is.
+
+
+
 // string::npos means that find() could not find the requested text.
 // The name npos means "no position".
 // It is a special value of type string::size_type. Do not treat it as a
 // normal index; compare the result of find() with string::npos.
 // It is commonly defined as string::size_type(-1); its exact numeric value
 // depends on the size of the type on the system.
+// string::npos means "not found".
+// find() returns a valid index if it finds the text.
+// If it does not find the text, it returns string::npos.
+// string::npos is not a normal integer value.
+// So we store the result in size_t or string::size_type, not int.
+// Example:
+// size_t pos = text.find("abc");
+// if (pos == string::npos) {
+//     cout << "Not found";
+// } else {
+//     cout << "Found at index " << pos;
+// }
+//And this is the simplest reason:
+// int cannot safely store string::npos
+// because npos is a special "not found" value, not a normal integer
+// so we use size_t
+
 
 int main() {
 	string sentence = "My Name is Love Babbar";
