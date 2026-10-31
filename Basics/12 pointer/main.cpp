@@ -242,7 +242,19 @@ void unnamedHeapMemoryExample() {
 // -----------------------------------------------------------------------------
 // 5. Dynamic allocation of one variable
 // -----------------------------------------------------------------------------
+// Heap array creation
 
+// new int[5] creates an array in heap memory.
+// The array itself has no normal variable name.
+// We use a pointer variable to access it.
+
+// int *arr = new int[5];
+
+// arr[0] = 10;
+// arr[1] = 20;
+
+// delete[] arr;   // free heap array
+// arr = nullptr;  // pointer is now empty
 void singleHeapAllocation() {
 	// The pointer variable itself is local, but the integer is on the heap.
 	int *ptr = new int;
