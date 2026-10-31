@@ -150,24 +150,27 @@ void basicPointerExample() {
 // This memory block is not given a normal variable name like x, y, or score.
 // Instead, the address of that memory block is stored in ptr.
 
-int *ptr = new int(10);
+void unnamedHeapMemoryExample() {
+	int *ptr = new int(10);
 
-// ptr is the variable name.
-// It stores the address of the newly created memory.
-// We can access the value in that memory using *ptr.
+	// ptr is the variable name.
+	// It stores the address of the newly created memory.
+	// We can access the value in that memory using *ptr.
 
-cout << *ptr << endl;  // prints 10
+	cout << *ptr << endl;  // prints 10
 
-// So the real meaning is:
-// ptr = address of heap memory
-// *ptr = value stored in that heap memory
+	// So the real meaning is:
+	// ptr = address of heap memory
+	// *ptr = value stored in that heap memory
 
-// We do NOT have a direct name for the heap memory itself.
-// We only access it through the pointer variable ptr.
+	// We do NOT have a direct name for the heap memory itself.
+	// We only access it through the pointer variable ptr.
 
-// After using it:
-delete ptr;
-ptr = nullptr;
+	// After using it:
+	delete ptr;
+	ptr = nullptr;
+}
+
 // Stack memory can be accessed by name and by pointer.
 // Heap memory created with new has no direct name,
 // so we access it only through the pointer.
@@ -431,6 +434,9 @@ int main() {
 
 	cout << endl << "Single heap allocation:" << endl;
 	singleHeapAllocation();
+
+	cout << endl << "Unnamed heap memory:" << endl;
+	unnamedHeapMemoryExample();
 
 	cout << endl << "Pointer arithmetic:" << endl;
 	pointerArithmeticExample();
