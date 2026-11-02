@@ -24,6 +24,84 @@ cout<<"namaste dunia"<<'\n';
     return 0;
 }
 
+
+// What happens if you change return 0; to return -1;?
+//
+// When a C++ program ends, the value returned from main() is sent to the
+// operating system as the program's exit status.
+//
+// return 0; means the program finished successfully.
+// return -1; means the program ended with an error/failure.
+//
+// So if we change:
+//
+// int main() {
+//     return 0;
+// }
+//
+// to:
+//
+// int main() {
+//     return -1;
+// }
+//
+// the program still runs, but it exits with a failure code.
+//
+// This does NOT mean the program "crashes" automatically.
+// It just tells the OS that the program did not complete successfully.
+//
+// A non-zero value like -1 is usually treated as an error.
+// That can make the terminal show an error, or let scripts detect failure.
+//
+// In simple words:
+// return 0; = success
+// return -1; = failure
+//
+// Also, once return is reached, the program ends immediately,
+// so any code after it will not run.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// what a pre-processor directive (like #include) is.
+// A pre-processor directive is a command that is processed before the
+// actual C++ compilation starts.
+//
+// It begins with #, such as:
+// #include <iostream>
+// #define PI 3.14
+//
+// The compiler does not compile these lines like normal code.
+// First, the pre-processor reads them and performs actions.
+//
+// Example:
+// #include <iostream>
+// This tells the compiler to include the contents of the iostream header file,
+// which gives us input/output features like cout and cin.
+//
+// So #include is used to add code from another file into our program.
+//
+// In simple words:
+// pre-processor directives are instructions for the compiler before compilation.
+//
+// They are used for:
+// - including header files
+// - defining constants or macros
+// - conditional compilation
+
+
 /*
 PRACTICAL USE OF THIS TOPIC:
 

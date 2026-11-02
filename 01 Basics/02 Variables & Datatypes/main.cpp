@@ -80,6 +80,55 @@ cout<<sizeof(age)<<endl; // 4 bytes
 return 0;   
 }
 
+
+
+
+
+// Question: What are the memory sizes and value ranges of common data types like int, float, double, and char?
+//
+// Answer:
+// In C++, data types have different sizes in memory, and each type can store
+// only a certain range of values. The sizes may vary slightly depending on the
+// compiler and system, but on most modern systems:
+//
+// char = 1 byte
+// Range: -128 to 127 for signed char
+// Range: 0 to 255 for unsigned char
+//
+// int = 4 bytes
+// Range: -2,147,483,648 to 2,147,483,647
+//
+// float = 4 bytes
+// Approximate range: ±3.4e-38 to ±3.4e38
+//
+// double = 8 bytes
+// Approximate range: ±1.7e-308 to ±1.7e308
+//
+// These values are verified using sizeof() and std::numeric_limits.
+//
+// Example:
+// #include <iostream>
+// #include <limits>
+//
+// int main() {
+//     std::cout << sizeof(char) << "\n";
+//     std::cout << sizeof(int) << "\n";
+//     std::cout << sizeof(float) << "\n";
+//     std::cout << sizeof(double) << "\n";
+//
+//     std::cout << std::numeric_limits<int>::min() << " to "
+//               << std::numeric_limits<int>::max() << "\n";
+//
+//     return 0;
+// }
+//
+// Important:
+// - char stores characters, but it is still 1 byte in memory.
+// - float and double are used for decimal numbers.
+// - int is used for whole numbers.
+// - The exact size is implementation-defined, but these are the usual values
+//   on most systems.
+
 /*
 PRACTICAL USE OF THIS TOPIC:
 

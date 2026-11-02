@@ -71,6 +71,90 @@ int main() {
     // typecasting
 
 
+// ==================== TYPECASTING ====================
+// Typecasting means converting a value from one data type to another data type.
+// It is useful when we want an operation to use a different data type.
+
+// IMPLICIT TYPECASTING
+// Implicit typecasting happens automatically when C++ converts a value
+// to another compatible type.
+// It usually converts a smaller type into a larger type to avoid data loss.
+//
+// Example:
+// int number = 10;
+// double result = number;
+//
+// The int value 10 is automatically converted to the double value 10.0.
+
+// Another example:
+// int wholeNumber = 5;
+// double decimalNumber = 2.5;
+// double answer = wholeNumber + decimalNumber;
+//
+// wholeNumber is automatically converted to double before addition.
+
+// INTEGER DIVISION
+// The type of the operands affects the type of the result.
+// If both operands are int, C++ performs integer division.
+// Integer division keeps only the whole-number part and removes the remainder.
+//
+// int result = 5 / 2;
+// result becomes 2, not 2.5.
+// Both 5 and 2 are int values, so the result is calculated as an int.
+//
+// To get a decimal answer, at least one operand must be a floating-point value:
+// double result1 = 5.0 / 2;                    // 2.5
+// double result2 = static_cast<double>(5) / 2; // 2.5
+//
+// In simple words:
+// int / int = integer result
+// double / int = decimal result
+// int / double = decimal result
+
+// EXPLICIT TYPECASTING
+// Explicit typecasting happens when the programmer manually asks C++
+// to convert a value to another type.
+//
+// Syntax:
+// dataType(value)
+//
+// Example:
+// int a = 5;
+// int b = 2;
+// double answer = double(a) / b;
+//
+// Without typecasting, a / b performs integer division and gives 2.
+// With double(a), the division gives 2.5.
+
+// C++ style explicit typecasting can also be written using static_cast:
+// int a = 5;
+// int b = 2;
+// double answer = static_cast<double>(a) / b;
+// Important point: This does NOT mean “a becomes float permanently”. It only means “for this expression, use float division”.
+// TYPECASTING A DECIMAL TO AN INTEGER
+// When a decimal value is converted to int, the fractional part is removed.
+// It does not round the value.
+//
+// double price = 9.75;
+// int wholePrice = static_cast<int>(price);
+// wholePrice becomes 9.
+
+// POSSIBLE DATA LOSS
+// Converting a larger or more precise type to a smaller type can lose data.
+//
+// double value = 12.89;
+// int result = static_cast<int>(value);
+// result becomes 12, so .89 is lost.
+
+// Summary:
+// - Implicit typecasting is performed automatically by C++.
+// - Explicit typecasting is performed manually by the programmer.
+// - Typecasting can be used to control the result of an operation.
+// - Converting from double to int removes the decimal part.
+
+
+
+
 
     // Relational operator -These operators compare two values.
     // its answer is mostly in the form of true or false .
@@ -265,6 +349,17 @@ cout<<!isMale<<endl;
     
     return 0;
 }
+
+// can we apply modulus operator (%) on float type value
+// answer-The % operator works only with integers because it calculates the whole-number remainder
+// Floating-point numbers can contain decimal fractions, so C++ uses fmod() to calculate their remainder
+// // For integers:
+// 10 % 3;              // modulus operator
+
+//  For float or double:
+// fmod(10.5, 3.2);     // fmod() function
+
+
 
 /*
 PRACTICAL USE OF THIS TOPIC:

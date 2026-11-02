@@ -142,6 +142,22 @@ cout<<"your height is short"<<endl;
    return 0;
 }
 
+// what if we take input instead of giving condition
+// int i;
+// if (cin>>i){
+//     cout<<"Pratik"<<endl;
+// }
+// this code work
+
+// what if we gave any output instead of giving condition
+// if (cout << "Hi") {
+//     cout << "Pratik" << endl;
+// }
+// this also works because cout << "Hi" prints the text and returns the cout stream.
+// In a condition, C++ checks whether the stream is valid (not failed).
+// Since cout is working normally, the condition is true, so Pratik is printed.
+
+
 /*
 PRACTICAL USE OF THIS TOPIC:
 

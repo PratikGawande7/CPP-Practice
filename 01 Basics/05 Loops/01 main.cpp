@@ -111,7 +111,12 @@ i=i+1;
 return 0;
 
 }
-
+// what happpen if put ; after for()
+// for (int i=1;i<=10;i=i+1);
+// {
+//     cout<<i<<endl;
+// } 
+// this code dont work
 /*
 PRACTICAL USE OF THIS TOPIC:
 
