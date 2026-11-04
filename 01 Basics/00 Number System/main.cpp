@@ -1,5 +1,5 @@
 
-// ==================== BINARY AND NUMBER SYSTEMS ====================
+// ==================== NUMBER SYSTEMS ====================
 // A number system is a way of representing numbers using a set of symbols
 // and a base.
 //
