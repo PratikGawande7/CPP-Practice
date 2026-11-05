@@ -1,6 +1,7 @@
 // Today we will learn how to print something.
 
 // iostream gives us input and output tools such as cout.
+// It is called a header file.
 #include<iostream>
 
 // This lets us write cout instead of std::cout.
@@ -101,6 +102,19 @@ cout<<"namaste dunia"<<'\n';
 // - defining constants or macros
 // - conditional compilation
 
+/*
+In simple words:
+
+#include <iostream> is like bringing a toolbox
+that provides tools such as cout, cin, and endl.
+
+std is like a label or brand name
+used to identify standard C++ tools.
+
+using namespace std; means:
+"Use the tools identified by std directly,
+without writing std:: every time."
+*/
 
 /*
 PRACTICAL USE OF THIS TOPIC:
