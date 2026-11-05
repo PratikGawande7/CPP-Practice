@@ -42,10 +42,10 @@ char alphabet='P';
 double pi=3.141592653; 
 
 // boolean- true ya false value store karta hai
-// bool isMale=true;
-// bool isChild=1;
-// bool isFemale=false;
-// bool isgirl=0;
+ bool isMale=true;
+ bool isChild=1;
+ bool isFemale=false;
+ bool isgirl=0;
 
 // cout<<count<<endl;
 // cout<<price<<endl;

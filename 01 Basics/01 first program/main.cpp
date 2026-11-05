@@ -62,20 +62,6 @@ cout<<"namaste dunia"<<'\n';
 // so any code after it will not run.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // what a pre-processor directive (like #include) is.
 // A pre-processor directive is a command that is processed before the
 // actual C++ compilation starts.
