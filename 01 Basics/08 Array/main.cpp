@@ -122,6 +122,27 @@ void flipZeroAndOne(int arr[], int size) {
 //     {21, 22, 23, 24}
 // };
 
+// During initialization, the row size can be omitted because the compiler
+// counts the rows from the initializer:
+// int array2d[][4] = {
+//     {1, 2, 3, 4},
+//     {5, 6, 7, 8},
+//     {9, 10, 11, 12},
+//     {13, 14, 15, 16}
+// };
+//
+// The column size cannot be omitted because the compiler needs it to know
+// where each row ends in memory:
+// int array2d[][] = { ... }; // Invalid: column size is required.
+//
+// Both dimensions may also be specified:
+// int array2d[4][4] = {
+//     {1, 2, 3, 4},
+//     {5, 6, 7, 8},
+//     {9, 10, 11, 12},
+//     {13, 14, 15, 16}
+// };
+
 // Traversing a 2D array requires nested loops:
 // The outer loop handles rows because we finish each row before moving to the next;
 // the inner loop handles the columns within the current row.
