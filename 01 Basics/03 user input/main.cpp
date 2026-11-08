@@ -9,7 +9,7 @@ int main(){
     int age;
     
     cout << "Enter your age: ";
-    cin >> age; // take input from user
+    cin >> age; // take input from user and store it in age
     cout<<"your age is : " << age << endl; // print the input value
 
 

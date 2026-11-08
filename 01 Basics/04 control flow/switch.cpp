@@ -72,7 +72,7 @@ switch(grade){
 // unique case values- dont take same case again again with diferent outputs.
 
 
-// no case checking - dont make cases with condtion like case (age>12) this is not allow only cases with constant value works.( so for such cases use if else statements )
+// no case checking - dont make cases with condition like case (age>12) this is not allow only cases with constant value works.( so for such cases use if else statements )
 
 
 

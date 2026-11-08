@@ -14,7 +14,7 @@ int age=12;
 // }
 // else{
 //     cout<<"you are not eligible to vote "<<endl;
-
+// }
 // ternary operator
 // format- condition ? expression_if_true: expression_if_false; 
 // example -1
