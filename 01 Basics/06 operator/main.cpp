@@ -47,7 +47,7 @@ int main() {
     // Postfix uses the old value first, then changes it.
 
     // also in loop case instead of doing updation like i=i+1 we can now just write i++ or ++i .
-
+// In a loop, both i++ and ++i usually work because the updated value is used in the next iteration; the main difference matters when the increment expression's value is used immediately.
     // Binary operator 
     // A binary operator operates on two operands (values).
     // (1) Arithmetic operator 
