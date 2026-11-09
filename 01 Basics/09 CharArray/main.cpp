@@ -118,10 +118,7 @@ void convertToUppercase(char str[]) {
 // char name[] = "Love Babbar";
 // printName(name);
 //
-// The '\0' is still one array element, but it is not part of the text.
-// For example, "cat" has text length 3 and needs 4 array elements including
-// '\0'. getLength(name) returns the text length, not the array's capacity.
-//
+
 // This only works when the character array is guaranteed to contain '\0'.
 // For a raw character buffer that may not contain it, pass the capacity:
 // void processCharacters(char arr[], int size);
@@ -154,6 +151,9 @@ int getLength(char arr[]) {
 
 	return count;
 }
+// The '\0' is still one array element, but it is not part of the text.
+// For example, "cat" has text length 3 and needs 4 array elements including
+// '\0'. getLength(name) returns the text length, not the array's capacity.
 
 // Append the characters of b to the end of a.
 // getLength(a) counts the characters before '\0', so its result is the index
