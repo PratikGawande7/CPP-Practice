@@ -1,133 +1,206 @@
 /*
 CLASSES AND OBJECTS
-Read each topic in this order: the everyday idea, then the C++ meaning.
+
+HOW TO READ THIS FILE:
+This first part is a set of notes written inside a C++ comment. The
+indented code examples in the notes show the syntax for the idea being
+explained; they are small examples, not a second program to copy and run.
+Some examples are complete statements, such as `Student s;`. Others are
+parts of a class, such as a constructor, and belong inside the class braces.
+
+The runnable C++ program starts after the closing comment marker below.
+It contains a complete Student class and a main() function that uses it.
+You can read the notes first, then compare their short examples with the
+matching parts of that runnable program.
 
 1. A class defines a user-defined data type
 
-You already know built-in data types such as int, float, double, char, and
-bool. Each describes a kind of value. But a student is more than one value:
-a student can have a name, age, weight, and height.
+You already know built-in data types:
+  int    stores an integer, such as 20
+  float  and double store numbers with a fractional part
+  char   stores a character, such as 'A'
+  bool   stores true or false
 
-A class lets us define our own user-defined data type and group related
-information and actions. Its variables are called data members, and its
-functions are called member functions.
+Each built-in type describes one kind of value. But a real thing, such as a
+student, usually needs several pieces of information at once: a name, age,
+weight, and height. We want to keep those related pieces together instead
+of treating them as unrelated values.
 
-For example, if we wanted one custom data type to bundle an integer, a
-character, and a true/false value, we could define a class with an int, char,
-and bool data member. A Student can similarly bundle several integers and
-a string.
+A class lets us define our own type (a user-defined data type). It can
+bundle related information and actions into one definition. The variables
+inside it are called data members; the functions inside it are called
+member functions.
 
-2. Class vs. object: blueprint vs. real thing
+Here is the basic shape of a class. The names inside the braces are examples
+of information and actions the class can define:
+
+    class Student {
+    public:
+        int age;                 // data member: information each object has
+        void studying() { }      // member function: action an object can do
+    };                           // semicolon ends the class definition
+
+This is the class definition (the plan). To create a particular Student
+object from it, write `Student s;` somewhere in a function.
+
+For example, if we wanted one custom type to bundle an integer, a character,
+and a true/false value, we could define a class with an int, char, and bool
+data member. A Student type can similarly bundle several integers and a
+string. The class definition describes what every Student object can store
+and do.
+
+2. Class vs. object: the plan vs. the actual thing
 
 HOUSE BLUEPRINT:
 An architect draws where the rooms, washroom, hall, and other spaces belong.
 You cannot live in the drawing. It is a plan, not a house.
 
-The class is like that blueprint. The house actually built from the plan is
-like an object.
+The class is like that blueprint: it describes what a house should be like.
+The house actually built from the plan is like an object.
 
 COMPUTER MOUSE:
-The design showing the mouse's shape and buttons is like the class. Each
-physical mouse made from that design is an object.
+The design showing a mouse's shape and buttons is like the class. Each
+physical mouse made from that design is a separate object.
 
-Technical meaning: an object is an instance of a class. The class defines
-the user-defined data type; each object is one instance of that data type,
-with its own data. Just writing a class does not create an object.
+The important difference is:
+  class  = the description/type (the plan)
+  object = one actual thing made using that description
+
+In C++ terms, an object is an instance of a class. The class defines the
+user-defined data type; each object is one instance of that type and has
+its own data. For example, two Student objects can both have age and name,
+but one can store Asha and 20 while the other stores Kunal and 21. Just
+writing a class defines the type; it does not by itself create an object.
 
 3. What goes inside a class?
 
-  Data members = what an object HAS (its properties/state).
-  Member functions = what an object DOES (its behavior/actions).
+  Data members   = what an object HAS (its properties or state).
+  Member functions = what an object DOES (its behavior or actions).
 
 For Student, age and name are data members. running() and studying() are
-member functions.
+member functions. In everyday language: age/name describe the student;
+running/studying are actions that student can do.
 
 ACCESS:
-Members in a class are private by default. That means code outside the class
-cannot directly use them. Write public: to allow outside code, such as
-main(), to access the members below it. A struct works similarly, but its
+Members in a class are private by default. "Private" means code outside the
+class cannot directly use those members. Write public: to make the members
+after it accessible to outside code, such as main(). In the runnable
+Student class after these notes, public: lets main() read and change a
+Student's data and call its functions. A struct works similarly, but its
 members are public by default.
 
 4. Writing a class
 
-Use the class keyword, then a name and a body. Class names are commonly
-written in CamelCase, such as Student. Do not miss the semicolon after the
-closing brace:
+Use the class keyword, then the type's name and a body between braces.
+Class names are commonly written in CamelCase, such as Student (each word
+starts with a capital letter). Members go inside the braces. Do not miss
+the semicolon after the closing brace:
 
     class Student {
         // members go here
     }; // required semicolon
 
+This defines what a Student object will contain; it does not yet create a
+particular student. An object is created separately, for example with
+Student s;.
+
 5. How much memory does an object use?
 
-The class is the description; an object is the actual instance that takes
-storage. Even an empty class has a nonzero size (commonly 1 byte). This
-allows distinct empty objects to have distinct addresses. The exact size
-is implementation-dependent.
+The class is the description/type; an object is an actual instance that
+takes storage for its data. Even an empty class has a nonzero size
+(commonly 1 byte). This allows distinct empty objects to have distinct
+addresses. The exact size is implementation-dependent, meaning it can vary
+with the compiler and system.
 
 Do not just add up member sizes and assume that is always the class size.
-The compiler may add padding bytes so members are suitably aligned in
-memory. Three ints commonly take 12 bytes, but check with sizeof.
+The compiler may add padding bytes (unused gaps) so members are suitably
+aligned in memory and can be accessed properly. Three ints commonly take
+12 bytes, but check with sizeof on your own compiler.
 
 Adding string does not mean Student must be exactly 40 bytes. The size of
-string and the padding vary by implementation. Also, string's characters
+string and the padding vary by implementation. Also, a string's characters
 may be stored elsewhere, so sizeof(Student) does not include the full text
-of every name.
+of every name. sizeof reports the size of the object itself, not necessarily
+all memory that the object may use elsewhere.
 
 6. Making objects: local and dynamic
 
 LOCAL OBJECT:
     Student s1;
 
-This is often called stack allocation in beginner lessons. More precisely,
-s1 has automatic storage duration: it is destroyed when its scope ends.
-Use the dot operator to access its members: s1.age, s1.studying().
+This creates one Student object named s1. This is often called stack
+allocation in beginner lessons. More precisely, s1 has automatic storage
+duration: C++ automatically destroys it when the scope containing it ends.
+A scope is the region between a matching pair of braces. Use the dot
+operator to access a member through the object itself:
+    s1.age
+    s1.studying()
 
 DYNAMIC OBJECT:
     Student* s = new Student;
 
-new creates the object with dynamic storage duration and gives back its
-address. The pointer s stores that address. Access members with ->:
-s->age. This is shorthand for (*s).age. `new Student()` is another way to
-write the no-argument construction.
+Read this in pieces:
+  Student* s  declares s as a pointer that can hold the address of a Student.
+  new Student creates a Student object with dynamic storage duration.
+  The new expression gives back that object's address, which is stored in s.
+
+Because s is a pointer (it holds an address), use -> to access the object's
+members: s->age. This is shorthand for (*s).age: first follow the pointer
+to the object, then use the dot operator. `new Student()` is another way
+to write the no-argument construction.
 
 A raw new object is not cleaned up just because the pointer goes out of
 scope. Call delete s exactly once when done; that destroys the object and
-releases its memory. Forgetting this can cause a memory leak. Modern C++
-usually prefers a smart pointer such as unique_ptr, which cleans up
-automatically. The program below shows both ideas.
+releases its memory. Forgetting this can cause a memory leak (memory that
+the program no longer uses but has not released). Modern C++ usually
+prefers a smart pointer such as unique_ptr, which cleans up automatically.
+The runnable example after these notes demonstrates raw new/delete and
+smart-pointer cleanup.
 
 7. Constructors: setting an object up
 
 When an object is created, we often want its data to start with useful
 values. A constructor is a special member function that runs automatically
-at object creation and initializes the object.
+when an object is created and initializes that object. Think of it as the
+setup instructions that run for each new object.
 
 Constructor rules:
   - It has the same name as the class.
   - It has no return type (not even void).
 
 DEFAULT CONSTRUCTOR:
-A constructor that can be called without passing arguments. Example:
-Student s;
+A constructor that can be called without passing arguments (extra values
+between the parentheses). Example:
 
-In the lecture's example, this constructor sets age to 0, weight to 3,
-height to 45, and name to "dummy". These are just chosen starting values;
-the constructor can initialize members with other suitable values.
+    Student s;
+
+This creates s and calls the no-argument constructor. In the lecture's
+example, this constructor sets age to 0, weight to 3, height to 45, and
+name to "dummy". These are just chosen starting values; the constructor
+can initialize members with other suitable values.
 
 PARAMETERIZED CONSTRUCTOR:
-A constructor that receives values. Example:
-Student s(20, 70, 175, "Kunal");
+A constructor that receives values (parameters), so each object can start
+with the details we provide. Example:
+
+    Student s(20, 70, 175, "Kunal");
+
+Here the example constructor receives age 20, weight 70, height 175, and
+name "Kunal", in that order. The values supplied when calling it are called
+arguments; the named inputs in the constructor definition are parameters.
 
 THE this POINTER:
 If a parameter and a data member are both named age, `age = age;` does not
-express the intended assignment: it refers to the parameter on both sides.
-`this` points to the current object. Therefore:
+express the intended assignment: both names refer to the parameter, so it
+would assign the parameter to itself. `this` points to the current object
+(the particular object whose constructor or member function is running).
+Therefore:
 
     this->age = age;
 
 means "put the parameter age into this object's age member." The left side
-uses this-> to name the member; the right side is the parameter.
+uses this-> to name the member of the current object; the right side is the
+parameter value.
 
 INITIALIZATION LIST:
 A constructor can initialize its members before its body starts by writing
@@ -135,14 +208,16 @@ a colon after its parameter list:
 
     Student(int myAge) : age(myAge) { }
 
-This is another clear way to initialize members and is generally preferred
-to assigning to them inside the constructor body.
+Here age(myAge) initializes the object's age member using the parameter
+myAge. This is another clear way to initialize members and is generally
+preferred to assigning to them inside the constructor body.
 
 8. Destructors: when an object is finished
 
-A destructor is a special member function named ~ClassName. It has no
-parameters or return type, and it cannot be overloaded. It runs when an
-object's lifetime ends, often to release resources.
+A destructor is a special member function named ~ClassName (for example,
+~Student). It has no parameters or return type, and it cannot be
+overloaded. It runs when an object's lifetime ends, often to release
+resources used by that object.
 
 A local object is destroyed automatically when its scope ends. A dynamic
 object made with raw new is destroyed when delete is called. C++ does not
@@ -151,10 +226,11 @@ pointer can manage that cleanup for you.
 
 9. Homework question: Student s; or Student s();?
 
-`Student s;` creates an object and calls its default constructor.
+`Student s;` creates an object named s and calls its default constructor.
 Surprisingly, `Student s();` declares a function named s that takes no
-arguments and returns Student; it does not create an object. This is called
-the "most vexing parse." Use `Student s;` or `Student s{};` to make an object.
+arguments and returns Student; it does not create an object. This confusing
+case is called the "most vexing parse." Use `Student s;` or `Student s{};`
+to make an object.
 
 10. Check these sizes on your own compiler
 
@@ -172,6 +248,8 @@ Use . with an object, -> with a pointer.
 Constructor sets up an object. Destructor runs when its lifetime ends.
 */
 
+// PART B: Complete, runnable C++ example.
+// The notes above explain the ideas; this program demonstrates them.
 #include <iostream>
 #include <memory>
 #include <string>

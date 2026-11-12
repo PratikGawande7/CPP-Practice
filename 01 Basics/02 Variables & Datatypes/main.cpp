@@ -11,7 +11,7 @@ int main(){
 // cout<<age<<endl;
 
 // declaration meaning-sirf variable declare karna value nahi dalna
-// int age;(isse koi bhi garbage value store ho jayegi)
+// int age;(isse memory mein age naam ka variable ban jayega aur usme koi bhi garbage value store ho jayegi)
 
 // cout<<age<<endl;(isse jo bhi garbage value store hogi woh print ho jayegi)
 
